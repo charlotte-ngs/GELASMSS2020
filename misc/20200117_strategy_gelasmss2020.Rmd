@@ -1,0 +1,45 @@
+---
+title: "Strategy for GELASM SS2020"
+subtitle: "An implementation in R Markdown"
+author: "Peter von Rohr"
+date: "`r Sys.Date()`"
+output:
+  tufte::tufte_html: default
+  tufte::tufte_handout:
+    citation_package: natbib
+    latex_engine: xelatex
+  tufte::tufte_book:
+    citation_package: natbib
+    latex_engine: xelatex
+bibliography: skeleton.bib
+link-citations: yes
+---
+
+```{r setup, include=FALSE}
+library(tufte)
+# invalidate cache when the tufte version changes
+knitr::opts_chunk$set(tidy = FALSE, cache.extra = packageVersion('tufte'))
+options(htmltools.dir.version = FALSE)
+```
+
+# Introduction
+```{r, echo=FALSE}
+n_nr_courses <- 2
+n_nr_weeks_per_semester <- 15
+n_nr_weeks_taken <- 1 + 1 + 1
+n_nr_weeks_lecture <- n_nr_weeks_per_semester - n_nr_weeks_taken
+n_nr_weeks_per_course <- n_nr_weeks_lecture / n_nr_courses
+```
+
+The complete spring semester^[The semester starts on 2020-02-17 and ends on 2020-05-29.] lasts for `r n_nr_weeks_per_semester` weeks. The last two mondays are occupied by the test exam and the final exam and Easter Monday is a holiday. This leaves `r n_nr_weeks_lecture` for lectures. For each of the two courses ASM and GEL there are `r n_nr_weeks_per_course` weeks of lecture. 
+
+In what follows, it is outlined what topics are tought and how the materials should be explained.
+
+
+# Applied Statistical Methods in Animal Sciences^[ASM for short]
+
+
+```{r bib, include=FALSE}
+# create a bib file for the R packages used in this document
+if (!file.exists('skeleton.bib')) knitr::write_bib(c('base', 'rmarkdown'), file = 'skeleton.bib')
+```

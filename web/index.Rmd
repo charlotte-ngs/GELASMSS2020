@@ -34,12 +34,12 @@ vec_topics[which(Datum == format(as.Date("2020/05/25"), "%d.%m"))] <- "__Final E
 
 __Welcome__ to 
 
-- [751-7602-00L	Applied Statistical Methods in Animal Sciences](http://www.vorlesungsverzeichnis.ethz.ch/Vorlesungsverzeichnis/lerneinheit.view?semkez=2019S&ansicht=ALLE&lerneinheitId=128454&lang=en)
-- [751-6212-00L Genetic Evaluation of Lifestock](http://www.vorlesungsverzeichnis.ethz.ch/Vorlesungsverzeichnis/lerneinheit.view?semkez=2019S&ansicht=ALLE&lerneinheitId=127426&lang=en)
+- [751-7602-00L	Applied Statistical Methods in Animal Sciences](http://www.vorlesungsverzeichnis.ethz.ch/Vorlesungsverzeichnis/lerneinheit.view?lerneinheitId=136449&semkez=2020S&lang=en)
+- [751-6212-00L Genetic Evaluation of Lifestock](http://www.vorlesungsverzeichnis.ethz.ch/Vorlesungsverzeichnis/lerneinheit.view?lerneinheitId=135453&semkez=2020S&lang=en)
 
 
 ## Topics for Master Theses
-Topics for Master Theses at Qualitas AG together with ETH are shown [here](`r paste0(sBaseUrl, 'misc/20181231_master_thesis_topics/MasterThesisTopics_SS2019.html')`).
+Topics for Master Theses at Qualitas AG together with ETH are shown [here](`r paste0(sBaseUrl, 'misc/MasterThesisTopics_SS2020.html')`).
 
 
 ## Description
@@ -67,7 +67,7 @@ More information on the excursion will be available from here. [here](`r paste0(
 
 
 ### Exercise Platform
-You can use the exercise platform to work on exercise problems. The platform is reachable at: http://r4tea.rteastem.org:8787/
+You can use the exercise platform to work on exercise problems. The platform is reachable at:
 
 The username corresponds to the part of your E-Mail address before the `@`-sign. The password is sent to you via a different E-Mail.
 
