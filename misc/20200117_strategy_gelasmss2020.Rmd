@@ -4,10 +4,10 @@ subtitle: "An implementation in R Markdown"
 author: "Peter von Rohr"
 date: "`r Sys.Date()`"
 output:
-  tufte::tufte_html: default
   tufte::tufte_handout:
     citation_package: natbib
     latex_engine: xelatex
+  tufte::tufte_html: default
   tufte::tufte_book:
     citation_package: natbib
     latex_engine: xelatex
@@ -20,6 +20,13 @@ library(tufte)
 # invalidate cache when the tufte version changes
 knitr::opts_chunk$set(tidy = FALSE, cache.extra = packageVersion('tufte'))
 options(htmltools.dir.version = FALSE)
+# initialise mendeley export obj
+met <- rmddochelper::MendeleyExportToolR6$new()
+# setting the current rmd-file
+met$set_this_rmd_file(ps_this_rmd_file = ifelse(rstudioapi::isAvailable(),
+                              rstudioapi::getActiveDocumentContext()$path,
+                              rprojroot::thisfile()))
+met$set_local_bib_file(ps_local_bib_file = 'skeleton.bib') 
 ```
 
 # Introduction
@@ -37,6 +44,48 @@ In what follows, it is outlined what topics are tought and how the materials sho
 
 
 # Applied Statistical Methods in Animal Sciences^[ASM for short]
+The title of this course is very broad and it leaves a lot of room for potential topics to be covered. The problem is with only `r n_nr_weeks_per_course` weeks, the number of lecture hours is small. There are two potential strategies that can be used to cope with the previously mentioned problem. 
+
+1. We can either cover many different topics, but each topic is only treated very superficially.
+2. We have to make some choices on the topics covered and leave out all the other topics. 
+
+Both strategies have their pros and cons. In previous years, the second strategy was favored and only a selection of topics was covered. 
+
+
+## Potential Topics
+The set of potential topics is chosen from `r met$add('Essl1987')`. Those are^[The titles are translated in an ad hoc way from German into English]
+
+1. Basic Terminology of Statistics
+2. Probability Theory
+3. Elementary Statistical Measures
+4. Probability Distributions
+5. Hypothesis-Testing
+6. Multiple Coparisons of Means
+7. Introduction into Matrix Computation
+8. Basics of Parameter Estimation
+9. Measures of Dependencies Between Traits
+10. Multiple and Nonlinear Regression
+11. Estimation of Fixed Effects
+12. Prediction of Random Effects (BLUP)
+13. Estimation of Variance- and Covariance Components
+14. Non-parametric Applications
+15. Experimental Design
+
+
+## Choice of Topics
+Chapters 7 and 8 can be taken as pre-requisites. The pre-requisites are included in the course notes, but not discussed in the course. Chapters 10 to 13 can be used as material in the course. The course notes start with a preface
+
+
+## Preface
+
+
+## Prerequisites
+
+
+## Material
+
+
+
 
 
 ```{r bib, include=FALSE}
