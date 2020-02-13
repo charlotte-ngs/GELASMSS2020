@@ -54,4 +54,9 @@ The students are familiar with the properties of multiple linear regression and 
 
 
 ## Prerequisites {-}
-Because the data that is used in this course comes from genetics, a basic level of quantitative genetics is useful for this course. 
+Because the data that is used in this course comes from genetics, a basic level of quantitative genetics is useful for this course. All statistical models will be presented in matrix-vector notation, hence some basics of linear algebra helps in understanding the presented material. Introductory chapters to both subjects (quantitative genetics and linear algebra) are included in these course notes, but will not be discussed during the lecture. These chapters are prepared for students who feel that they need more background. But this material is left for self-studying. 
+
+
+
+
+
