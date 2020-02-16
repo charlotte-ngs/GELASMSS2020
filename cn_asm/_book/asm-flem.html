@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Fixed Linear Effects Models | Applied Statistical Methods in Animal Sciences</title>
+  <meta name="description" content="Chapter 2 Fixed Linear Effects Models | Applied Statistical Methods in Animal Sciences" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Fixed Linear Effects Models | Applied Statistical Methods in Animal Sciences" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://github.com/charlotte-ngs/GELASMSS2020" />
+  
+  
+  <meta name="github-repo" content="charlotte-ngs/GELASMSS2020" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Fixed Linear Effects Models | Applied Statistical Methods in Animal Sciences" />
+  
+  
+  
+
+<meta name="author" content="Peter von Rohr" />
+
+
+<meta name="date" content="2020-02-07" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="asm-intro.html"/>
+<link rel="next" href="intro-linalg.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Applied Statistical Methods</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#general-developments"><i class="fa fa-check"></i>General Developments</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#where-does-this-course-fit-in"><i class="fa fa-check"></i>Where Does This Course Fit In?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-objectives"><i class="fa fa-check"></i>Course Objectives</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#prerequisites"><i class="fa fa-check"></i>Prerequisites</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="asm-intro.html"><a href="asm-intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="asm-intro.html"><a href="asm-intro.html#asm-traditional-animal-breeding"><i class="fa fa-check"></i><b>1.1</b> Traditional Livestock Breeding</a></li>
+<li class="chapter" data-level="1.2" data-path="asm-intro.html"><a href="asm-intro.html#asm-genomic-selection"><i class="fa fa-check"></i><b>1.2</b> Genomic Selection</a></li>
+<li class="chapter" data-level="1.3" data-path="asm-intro.html"><a href="asm-intro.html#asm-mono-genic-model"><i class="fa fa-check"></i><b>1.3</b> Mono-Genic Model</a></li>
+<li class="chapter" data-level="1.4" data-path="asm-intro.html"><a href="asm-intro.html#asm-two-step-approach"><i class="fa fa-check"></i><b>1.4</b> Two Step Approach</a></li>
+<li class="chapter" data-level="1.5" data-path="asm-intro.html"><a href="asm-intro.html#asm-single-step-approach"><i class="fa fa-check"></i><b>1.5</b> Single Step Approach</a></li>
+<li class="chapter" data-level="1.6" data-path="asm-intro.html"><a href="asm-intro.html#asm-summary"><i class="fa fa-check"></i><b>1.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="asm-flem.html"><a href="asm-flem.html"><i class="fa fa-check"></i><b>2</b> Fixed Linear Effects Models</a><ul>
+<li class="chapter" data-level="2.1" data-path="asm-flem.html"><a href="asm-flem.html#asm-flem-other-resources"><i class="fa fa-check"></i><b>2.1</b> Other Resources</a></li>
+<li class="chapter" data-level="2.2" data-path="asm-flem.html"><a href="asm-flem.html#asm-flem-motivation"><i class="fa fa-check"></i><b>2.2</b> Motivation</a></li>
+<li class="chapter" data-level="2.3" data-path="asm-flem.html"><a href="asm-flem.html#asm-flem-data"><i class="fa fa-check"></i><b>2.3</b> Data</a></li>
+<li class="chapter" data-level="2.4" data-path="asm-flem.html"><a href="asm-flem.html#asm-flem-model"><i class="fa fa-check"></i><b>2.4</b> Model</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="asm-flem.html"><a href="asm-flem.html#asm-flem-genetic-model"><i class="fa fa-check"></i><b>2.4.1</b> Genetic Model</a></li>
+<li class="chapter" data-level="2.4.2" data-path="asm-flem.html"><a href="asm-flem.html#asm-flem-statistical-model"><i class="fa fa-check"></i><b>2.4.2</b> Statistical Model</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="asm-flem.html"><a href="asm-flem.html#asm-flem-definition"><i class="fa fa-check"></i><b>2.5</b> Definition of FLEM</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="asm-flem.html"><a href="asm-flem.html#asm-flem-terminology"><i class="fa fa-check"></i><b>2.5.1</b> Terminology</a></li>
+<li class="chapter" data-level="2.5.2" data-path="asm-flem.html"><a href="asm-flem.html#asm-flem-model-specification"><i class="fa fa-check"></i><b>2.5.2</b> Model Specification</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="asm-flem.html"><a href="asm-flem.html#asm-flem-parameter-estimation"><i class="fa fa-check"></i><b>2.6</b> Parameter Estimation Using Least Squares</a><ul>
+<li class="chapter" data-level="2.6.1" data-path="asm-flem.html"><a href="asm-flem.html#asm-flem-regression-example"><i class="fa fa-check"></i><b>2.6.1</b> An Example Dataset</a></li>
+<li class="chapter" data-level="2.6.2" data-path="asm-flem.html"><a href="asm-flem.html#asm-flem-error-variance"><i class="fa fa-check"></i><b>2.6.2</b> Variance of Errors</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="asm-flem.html"><a href="asm-flem.html#asm-flem-types-of-regression"><i class="fa fa-check"></i><b>2.7</b> Different Types of Linear Regressions</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="asm-flem.html"><a href="asm-flem.html#asm-flem-regression-origin"><i class="fa fa-check"></i><b>2.7.1</b> Regression Through The Origin</a></li>
+<li class="chapter" data-level="2.7.2" data-path="asm-flem.html"><a href="asm-flem.html#asm-flem-regression-intercept"><i class="fa fa-check"></i><b>2.7.2</b> Regression With Intercept</a></li>
+<li class="chapter" data-level="2.7.3" data-path="asm-flem.html"><a href="asm-flem.html#asm-flem-regression-transformed-predictors"><i class="fa fa-check"></i><b>2.7.3</b> Regression With Transformed Predictor Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="asm-flem.html"><a href="asm-flem.html#asm-flem-prediction"><i class="fa fa-check"></i><b>2.8</b> Predictions</a></li>
+<li class="chapter" data-level="2.9" data-path="asm-flem.html"><a href="asm-flem.html#asm-flem-reg-dummy"><i class="fa fa-check"></i><b>2.9</b> Regression On Dummy Variables</a><ul>
+<li class="chapter" data-level="2.9.1" data-path="asm-flem.html"><a href="asm-flem.html#asm-flem-flem-for-snp"><i class="fa fa-check"></i><b>2.9.1</b> Fixed Linear Effects Model For SNP Data</a></li>
+<li class="chapter" data-level="2.9.2" data-path="asm-flem.html"><a href="asm-flem.html#asm-flem-snp-obs"><i class="fa fa-check"></i><b>2.9.2</b> Example Data Set With SNP Loci And A Phenotypic Observation</a></li>
+<li class="chapter" data-level="2.9.3" data-path="asm-flem.html"><a href="asm-flem.html#asm-flem-parameter-estimation"><i class="fa fa-check"></i><b>2.9.3</b> Parameter Estimation In A Fixed Linear Effects Model</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="intro-linalg.html"><a href="intro-linalg.html"><i class="fa fa-check"></i><b>3</b> Introduction To Linear Algebra</a><ul>
+<li class="chapter" data-level="3.1" data-path="intro-linalg.html"><a href="intro-linalg.html#intro-linalg-glimpse-ahead"><i class="fa fa-check"></i><b>3.1</b> Glimpse Ahead</a></li>
+<li class="chapter" data-level="3.2" data-path="intro-linalg.html"><a href="intro-linalg.html#intro-linalg-vectors"><i class="fa fa-check"></i><b>3.2</b> Vectors</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="intro-linalg.html"><a href="intro-linalg.html#intro-linalg-physics-perspective"><i class="fa fa-check"></i><b>3.2.1</b> Physics Perspective</a></li>
+<li class="chapter" data-level="3.2.2" data-path="intro-linalg.html"><a href="intro-linalg.html#intro-linalg-computer-science-perspective"><i class="fa fa-check"></i><b>3.2.2</b> Computer Science Perspective</a></li>
+<li class="chapter" data-level="3.2.3" data-path="intro-linalg.html"><a href="intro-linalg.html#intro-linalg-geometric-context"><i class="fa fa-check"></i><b>3.2.3</b> Geometric Context</a></li>
+<li class="chapter" data-level="3.2.4" data-path="intro-linalg.html"><a href="intro-linalg.html#intro-linalg-coordinate-system"><i class="fa fa-check"></i><b>3.2.4</b> Coordinate System</a></li>
+<li class="chapter" data-level="3.2.5" data-path="intro-linalg.html"><a href="intro-linalg.html#intro-linalg-vector-operations"><i class="fa fa-check"></i><b>3.2.5</b> Vector Operations</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="intro-linalg.html"><a href="intro-linalg.html#intro-linalg-matrices"><i class="fa fa-check"></i><b>3.3</b> Matrices</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="intro-linalg.html"><a href="intro-linalg.html#intro-linalg-special-matrices"><i class="fa fa-check"></i><b>3.3.1</b> Special Matrices</a></li>
+<li class="chapter" data-level="3.3.2" data-path="intro-linalg.html"><a href="intro-linalg.html#intro-linalg-matrix-operation"><i class="fa fa-check"></i><b>3.3.2</b> Matrix Operations</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="intro-linalg.html"><a href="intro-linalg.html#intro-linalg-systems-of-equations"><i class="fa fa-check"></i><b>3.4</b> Systems Of Equations</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="intro-linalg.html"><a href="intro-linalg.html#intro-linalg-matrix-vector-notation"><i class="fa fa-check"></i><b>3.4.1</b> Matrix-Vector Notation</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="intro-linalg.html"><a href="intro-linalg.html#intro-linalg-solving-systems-of-linear-equations"><i class="fa fa-check"></i><b>3.5</b> Solving Systems of Linear Equations</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="quan-gen.html"><a href="quan-gen.html"><i class="fa fa-check"></i><b>4</b> Basics in Quantitative Genetics</a><ul>
+<li class="chapter" data-level="4.1" data-path="quan-gen.html"><a href="quan-gen.html#single-locus-quant-trait"><i class="fa fa-check"></i><b>4.1</b> Single Locus - Quantitative Trait</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="quan-gen.html"><a href="quan-gen.html#qg-terminology"><i class="fa fa-check"></i><b>4.1.1</b> Terminology</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="quan-gen.html"><a href="quan-gen.html#qg-frequency"><i class="fa fa-check"></i><b>4.2</b> Frequencies</a></li>
+<li class="chapter" data-level="4.3" data-path="quan-gen.html"><a href="quan-gen.html#hw-eq"><i class="fa fa-check"></i><b>4.3</b> Hardy-Weinberg Equilibrium</a></li>
+<li class="chapter" data-level="4.4" data-path="quan-gen.html"><a href="quan-gen.html#value-mean"><i class="fa fa-check"></i><b>4.4</b> Value and Mean</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="quan-gen.html"><a href="quan-gen.html#geno-value"><i class="fa fa-check"></i><b>4.4.1</b> Genotypic Values</a></li>
+<li class="chapter" data-level="4.4.2" data-path="quan-gen.html"><a href="quan-gen.html#pop-mean"><i class="fa fa-check"></i><b>4.4.2</b> Population Mean</a></li>
+<li class="chapter" data-level="4.4.3" data-path="quan-gen.html"><a href="quan-gen.html#breed-value"><i class="fa fa-check"></i><b>4.4.3</b> Breeding Values</a></li>
+<li class="chapter" data-level="4.4.4" data-path="quan-gen.html"><a href="quan-gen.html#allele-substitution"><i class="fa fa-check"></i><b>4.4.4</b> Allele Substitution</a></li>
+<li class="chapter" data-level="4.4.5" data-path="quan-gen.html"><a href="quan-gen.html#dominance-deviation"><i class="fa fa-check"></i><b>4.4.5</b> Dominance Deviation</a></li>
+<li class="chapter" data-level="4.4.6" data-path="quan-gen.html"><a href="quan-gen.html#summary-of-values"><i class="fa fa-check"></i><b>4.4.6</b> Summary of Values</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="quan-gen.html"><a href="quan-gen.html#variances"><i class="fa fa-check"></i><b>4.5</b> Variances</a></li>
+<li class="chapter" data-level="4.6" data-path="quan-gen.html"><a href="quan-gen.html#extension-to-more-loci"><i class="fa fa-check"></i><b>4.6</b> Extension To More Loci</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="quan-gen.html"><a href="quan-gen.html#epistatic-interaction"><i class="fa fa-check"></i><b>4.6.1</b> Epistatic Interaction</a></li>
+<li class="chapter" data-level="4.6.2" data-path="quan-gen.html"><a href="quan-gen.html#interaction-variance"><i class="fa fa-check"></i><b>4.6.2</b> Interaction Variance</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="quan-gen.html"><a href="quan-gen.html#genetic-models"><i class="fa fa-check"></i><b>4.7</b> Genetic Models</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="quan-gen.html"><a href="quan-gen.html#model-usage-in-routine-evaluations"><i class="fa fa-check"></i><b>4.7.1</b> Model Usage In Routine Evaluations</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="quan-gen.html"><a href="quan-gen.html#appendix-derivations"><i class="fa fa-check"></i><b>4.8</b> Appendix: Derivations</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Applied Statistical Methods in Animal Sciences</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="asm-flem" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Fixed Linear Effects Models</h1>
+<div id="asm-flem-other-resources" class="section level2">
+<h2><span class="header-section-number">2.1</span> Other Resources</h2>
+<p>This chapter is based on the work of <span class="citation">(Buehlmann and Maechler <a href="#ref-Buehlmann2014">2014</a>)</span>. Apart from that there are many other resources for the topic of <code>Multiple Linear Regressions</code>. An interesting online book is <span class="citation">(Lilja <a href="#ref-Lilja2016">2016</a>)</span>.</p>
+</div>
+<div id="asm-flem-motivation" class="section level2">
+<h2><span class="header-section-number">2.2</span> Motivation</h2>
+<p>Why is the topic of <code>fixed linear effects models</code> (FLEM) important for the analysis of genomic data? This question is best answered when looking at the data. In chapter <a href="asm-intro.html#asm-intro">1</a>, we saw that genomic breeding values can either be estimated using a two-step procedure (see section <a href="asm-intro.html#asm-two-step-approach">1.4</a>) or by a single step approach (see section <a href="asm-intro.html#asm-single-step-approach">1.5</a>). At the moment, we assume that we are in the first step of the two step approach where we estimate the marker effects (<span class="math inline">\(a\)</span>-values) in a reference population or alternatively we have a perfect data set with all animals genotyped and with a phenotypic observation in a single step setting. Both situations are equivalent when it comes to the structure of the underlying dataset and with respect to the proposed model to analyse the data.</p>
+</div>
+<div id="asm-flem-data" class="section level2">
+<h2><span class="header-section-number">2.3</span> Data</h2>
+<p>As already mentioned in section <a href="asm-flem.html#asm-flem-motivation">2.2</a>, we are assuming that we have a perfect data set for a given population of animals. That means each animal <span class="math inline">\(i\)</span> has a phenotypic observation <span class="math inline">\(y_i\)</span> for a given trait of interest. Furthermore, we assume to just have a map of three SNP markers. The marker loci are called <span class="math inline">\(G\)</span>, <span class="math inline">\(H\)</span> and <span class="math inline">\(I\)</span>. Each of the markers has just two alleles. Figure <a href="asm-flem.html#fig:datastucturegbv">2.1</a> tries to illustrate the structure of a dataset used to estimate GBV.</p>
+<div class="figure"><span id="fig:datastucturegbv"></span>
+<img src="odg/datastucturegbv.png" alt="Structure of Dataset To Estimate GBV"  />
+<p class="caption">
+Figure 2.1: Structure of Dataset To Estimate GBV
+</p>
+</div>
+<p>As can be seen from Figure <a href="asm-flem.html#fig:datastucturegbv">2.1</a> each of the <span class="math inline">\(N\)</span> animals have known genotypes for all three SNP markers and they all have a phenotypic observation <span class="math inline">\(y_i \quad (i = 1, \cdot, N)\)</span>. Because we are assuming each SNP marker to be bi-allelic, there are only three possible marker genotypes at every marker position. Hence marker genotypes are discrete entities with a fixed number of levels. Due to the nature of the SNP marker genotype data, we can already say that they could be modeled as fixed effects in a fixed linear effects model. More details about the model will follow in section <a href="asm-flem.html#asm-flem-model">2.4</a>.</p>
+</div>
+<div id="asm-flem-model" class="section level2">
+<h2><span class="header-section-number">2.4</span> Model</h2>
+<p>The goal of our data analysis using the dataset described in section <a href="asm-flem.html#asm-flem-data">2.3</a> is to come up with estimates for genomic breeding values for all animals in our dataset. The genomic breeding values will later be used to rank the animals. The ranking of the animals according to the GBV is used to select the parents of the future generation of livestock animals. It probably makes sense to distinguish between two different types of models that we have to set up. On the one side we need a model that describes the underlying genetic architecture which is present in our dataset. We will be using a so-called <strong>genetic</strong> model to describe this. On the other side, we have at some point being able to get estimates for the GBVs which requires a <strong>statistical</strong> model which is able to estimate unknown parameters as a function of observed data. In the end, we will realize that the two models are actually the same model but they are just different ways of looking at the same structure of underlying phenomena.</p>
+<div id="asm-flem-genetic-model" class="section level3">
+<h3><span class="header-section-number">2.4.1</span> Genetic Model</h3>
+<p>The availability of genomic information for all animals in the dataset makes it possible to use a polygenic model. In contrast to an infinitesimal model, a polygenic model uses a finite number of discrete loci to model the genetic part of an expressed phenotypic observation. From quantitative genetics (see e.g. <span class="citation">(Falconer and Mackay <a href="#ref-Falconer1996">1996</a>)</span> for a reference) we know that every phenotypic observation <span class="math inline">\(y\)</span> can be separated into a genetic part <span class="math inline">\(g\)</span> and an environmental part <span class="math inline">\(e\)</span>. This leads to the very simple genetic model</p>
+<p><span class="math display" id="eq:simplegeneticmodel">\[\begin{equation}
+  y = g + e
+  \tag{2.1}
+\end{equation}\]</span></p>
+<p>The environmental part can be split into some fixed known systematic factors such as <code>herd</code>, <code>season effects</code>, <code>age</code> and more and into a random unknown part. The systematic factors are typically grouped into a vector of fixed effects called <span class="math inline">\(\beta\)</span>. The unknown environmental random part is usually called <span class="math inline">\(\epsilon\)</span>. This allows to re-write the simple genetic model in <a href="asm-flem.html#eq:simplegeneticmodel">(2.1)</a> as</p>
+<p><span class="math display" id="eq:envdecompgeneticmodel">\[\begin{equation}
+  y = \beta + g + \epsilon
+  \tag{2.2}
+\end{equation}\]</span></p>
+<p>The genetic component <span class="math inline">\(g\)</span> can be decomposed into contributions from the finite number of loci that are influencing the observation <span class="math inline">\(y\)</span>. In our example dataset (see Figure <a href="asm-flem.html#fig:datastucturegbv">2.1</a>) there are three loci<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> that are assumed to have an effect on <span class="math inline">\(y\)</span>. Ignoring any interaction effects between the three loci, we can decompose the overall genetic effect <span class="math inline">\(g\)</span> into the some of the genotypic values of each locus. Hence</p>
+<p><span class="math display" id="eq:decompgeneticeffect">\[\begin{equation}
+  g = \sum_{j=1}^k g_j
+  \tag{2.3}
+\end{equation}\]</span></p>
+<p>where for our example <span class="math inline">\(k\)</span> is equal to three<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>.</p>
+<p>Considering all SNP loci to be purely additive which means that we are ignoring any dominance effects, the genotypic values <span class="math inline">\(g_j\)</span> at any locus <span class="math inline">\(j\)</span> can just take one of the three values <span class="math inline">\(-a_j\)</span>, <span class="math inline">\(0\)</span> or <span class="math inline">\(+a_j\)</span> where <span class="math inline">\(a_j\)</span> corresponds to the <span class="math inline">\(a\)</span> value from the mono-genic model (see Figure <a href="asm-intro.html#fig:monogenicsnpmodel">1.4</a>). For our example dataset the genotypic value for each SNP genotype is given in the following table.</p>
+<table>
+<caption>(#tab:02-flem-‹›ﬁgenotypicvalue)Genotypic Values For All Three SNP-Loci</caption>
+<thead>
+<tr class="header">
+<th align="left">SNP Locus</th>
+<th align="left">Genotype</th>
+<th align="left">Genotypic Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\(SNP_1\)</span></td>
+<td align="left"><span class="math inline">\(G_1G_1\)</span></td>
+<td align="left"><span class="math inline">\(a_1\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(SNP_1\)</span></td>
+<td align="left"><span class="math inline">\(G_1G_2\)</span></td>
+<td align="left"><span class="math inline">\(0\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(SNP_1\)</span></td>
+<td align="left"><span class="math inline">\(G_2G_2\)</span></td>
+<td align="left"><span class="math inline">\(-a_1\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(SNP_2\)</span></td>
+<td align="left"><span class="math inline">\(H_1H_1\)</span></td>
+<td align="left"><span class="math inline">\(a_2\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(SNP_2\)</span></td>
+<td align="left"><span class="math inline">\(H_1H_2\)</span></td>
+<td align="left"><span class="math inline">\(0\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(SNP_2\)</span></td>
+<td align="left"><span class="math inline">\(H_2H_2\)</span></td>
+<td align="left"><span class="math inline">\(-a_2\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(SNP_3\)</span></td>
+<td align="left"><span class="math inline">\(I_1I_1\)</span></td>
+<td align="left"><span class="math inline">\(a_3\)</span></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(SNP_3\)</span></td>
+<td align="left"><span class="math inline">\(I_1I_2\)</span></td>
+<td align="left"><span class="math inline">\(0\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(SNP_3\)</span></td>
+<td align="left"><span class="math inline">\(I_2I_2\)</span></td>
+<td align="left"><span class="math inline">\(-a_3\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>From the Table <a href="#tab:genotypicvalue"><strong>??</strong></a> we can see that always the allele with subscript <span class="math inline">\(1\)</span> is taken to be that with the positive effect. Combining the information from Table <a href="#tab:genotypicvalue"><strong>??</strong></a> together with the decomposition of the genotypic value <span class="math inline">\(g\)</span> in <a href="asm-flem.html#eq:decompgeneticeffect">(2.3)</a>, we get</p>
+<p><span class="math display" id="eq:genotypicvalueintermsofa">\[\begin{equation}
+  g = M \cdot a
+  \tag{2.4}
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(M\)</span> is an indicator matrix taking values of <span class="math inline">\(-1\)</span>, <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span> depending on the SNP marker genotype and <span class="math inline">\(a\)</span> is a vector of <span class="math inline">\(a\)</span> values. Combining the decomposition in <a href="asm-flem.html#eq:genotypicvalueintermsofa">(2.4)</a> together with the basic genetic model in <a href="asm-flem.html#eq:envdecompgeneticmodel">(2.2)</a>, we get</p>
+<p><span class="math display" id="eq:finalgeneticmodel">\[\begin{equation}
+  y = \beta + M \cdot a + \epsilon
+  \tag{2.5}
+\end{equation}\]</span></p>
+<p>The result obtained in <a href="asm-flem.html#eq:envdecompgeneticmodel">(2.2)</a> is the fundamental decomposition of the phenotypic observation <span class="math inline">\(y\)</span> into a genetic part represented by the SNP marker information (<span class="math inline">\(M\)</span>) and an environmental part (<span class="math inline">\(\beta\)</span> and <span class="math inline">\(\epsilon\)</span>). The <span class="math inline">\(a\)</span> values are unknown an must be estimated. The estimates of the <span class="math inline">\(a\)</span> values will then be used to predict the GBVs. How this estimation procedure works is described in the next section <a href="asm-flem.html#asm-flem-statistical-model">2.4.2</a>.</p>
+</div>
+<div id="asm-flem-statistical-model" class="section level3">
+<h3><span class="header-section-number">2.4.2</span> Statistical Model</h3>
+<p>When looking at the fundamental decomposition given in the genetic model presented in <a href="asm-flem.html#eq:finalgeneticmodel">(2.5)</a> from a statistics point of view, the model in <a href="asm-flem.html#eq:finalgeneticmodel">(2.5)</a> can be interpreted as <strong>fixed linear effects model</strong> (FLEM). FLEM represent a class of linear models where each model term except for the random residual term is a fixed effect. Furthermore, besides a random error term, the response is explained by a linear function of the predictor variables.</p>
+<p>Using the decomposition given in our genetic model (see equation <a href="asm-flem.html#eq:finalgeneticmodel">(2.5)</a>) for our example dataset illustrated in Figure <a href="asm-flem.html#fig:datastucturegbv">2.1</a>, every observation <span class="math inline">\(y_i\)</span> of animal <span class="math inline">\(i\)</span> can be written as</p>
+<p><span class="math display" id="eq:basisstatisticalmodel">\[\begin{equation}
+  y_i = W_i \cdot \beta + M_i \cdot a + \epsilon_i
+  \tag{2.6}
+\end{equation}\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(y_i\)</span> is the observation of animal <span class="math inline">\(i\)</span></li>
+<li><span class="math inline">\(\beta\)</span> is a vector of unknown systematic environmental effects</li>
+<li><span class="math inline">\(W_i\)</span> is an indicator row vector linking <span class="math inline">\(\beta\)</span> to <span class="math inline">\(y_i\)</span></li>
+<li><span class="math inline">\(a\)</span> is a vector of unknown additive allele substitution effects (<span class="math inline">\(a\)</span> values)</li>
+<li><span class="math inline">\(M_i\)</span> is an indicator row vector encoding the SNP genotypes of animal <span class="math inline">\(i\)</span> and</li>
+<li><span class="math inline">\(\epsilon_i\)</span> is the random unknown environmental term belonging to animal <span class="math inline">\(i\)</span></li>
+</ul>
+<p>In the following section, we write down the definition of a FLEM and compare it to the statistical model given in <a href="asm-flem.html#eq:basisstatisticalmodel">(2.6)</a>.</p>
+</div>
+</div>
+<div id="asm-flem-definition" class="section level2">
+<h2><span class="header-section-number">2.5</span> Definition of FLEM</h2>
+<p>The multiple fixed linear effects model is defined as follows.</p>
+
+<div class="definition">
+<span id="def:defflem" class="definition"><strong>Definition 2.1  (Fixed Linear Effects Model)  </strong></span>In a fixed linear effects model, every observation <span class="math inline">\(i\)</span> in a dataset is characterized by a <strong>response variable</strong> and a set of <strong>predictors</strong>. Up to some random errors the response variable can be expressed as a linear function of the predictors. The proposed linear function contains unknown parameters. The goal is to estimate both the unknown parameters and the error variance.
+</div>
+
+<div id="asm-flem-terminology" class="section level3">
+<h3><span class="header-section-number">2.5.1</span> Terminology</h3>
+<p>For datasets where both the predictors and the response variables are on a continuous scale, which means that they correspond to measured quantities such as body weight, breast circumference or milk yield, the model is referred to as <strong>multiple linear regression model</strong>. Because the statistical model in <a href="asm-flem.html#eq:basisstatisticalmodel">(2.6)</a> contains the SNP genotypes as discrete fixed effects, we are not dealing with a regression model but with a more general fixed linear effects model.</p>
+</div>
+<div id="asm-flem-model-specification" class="section level3">
+<h3><span class="header-section-number">2.5.2</span> Model Specification</h3>
+<p>An analysis of the model given in <a href="asm-flem.html#eq:basisstatisticalmodel">(2.6)</a> shows that it exactly corresponds to the definition <a href="asm-flem.html#def:defflem">2.1</a>. In this equivalence, the observation <span class="math inline">\(y_i\)</span> corresponds to the response variable. Furthermore, the unknown environmental term <span class="math inline">\(\epsilon\)</span> corresponds to the random residual part in the FLEM. Except for the random residuals the response variable <span class="math inline">\(y_i\)</span> is a linear function of the fixed effects which corresponds to all systematic environmental effects and to all SNP genotype effects.</p>
+<p>For the description of how to estimate the unknown parameter <span class="math inline">\(\beta\)</span> and <span class="math inline">\(a\)</span> in the model <a href="asm-flem.html#eq:basisstatisticalmodel">(2.6)</a>, it is useful to combine <span class="math inline">\(\beta\)</span> and <span class="math inline">\(a\)</span> into a single vector of unknown parameters and we call it <span class="math inline">\(b\)</span>.</p>
+<p><span class="math display" id="eq:combinefixedeffects">\[\begin{equation}
+  b = \left[ \begin{array}{c} \beta \\ a \end{array} \right]
+  \tag{2.7}
+\end{equation}\]</span></p>
+<p>Taking the equations as shown in <a href="asm-flem.html#eq:basisstatisticalmodel">(2.6)</a> for all observations (<span class="math inline">\(i=1, \ldots, N\)</span>) and expressing them in matrix-vector notation, we get</p>
+<p><span class="math display" id="eq:flemmatrixvector">\[\begin{equation}
+ y = Xb + \epsilon
+ \tag{2.8}
+\end{equation}\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(y\)</span> is the vector of <span class="math inline">\(N\)</span> observations</li>
+<li><span class="math inline">\(b\)</span> is the vector of all unknown fixed effects</li>
+<li><span class="math inline">\(X\)</span> is the incidence matrix linking the parameters of <span class="math inline">\(b\)</span> to <span class="math inline">\(y\)</span></li>
+<li><span class="math inline">\(\epsilon\)</span> is the vector of random residuals</li>
+</ul>
+<p>The incidence matrix <span class="math inline">\(X\)</span> in <a href="asm-flem.html#eq:flemmatrixvector">(2.8)</a> can be composed from the matrices <span class="math inline">\(W\)</span> and <span class="math inline">\(M\)</span> by concatenating the latter two matrices, i.e.,</p>
+<p><span class="math display" id="eq:composematrixx">\[\begin{equation}
+  X = \left[ \begin{array}{cc} W  &amp;  M  \end{array} \right]
+  \tag{2.9}
+\end{equation}\]</span></p>
+</div>
+</div>
+<div id="asm-flem-parameter-estimation" class="section level2">
+<h2><span class="header-section-number">2.6</span> Parameter Estimation Using Least Squares</h2>
+<p>The method of parameter estimation is explained using the simpler case of a regression model. That means both the predictors and the response variables are on a continuous scale. As a further simplification, we assume that there is only one predictor variable and one response variable. The predictor variable is called <span class="math inline">\(x\)</span> and the response variable is called <span class="math inline">\(y\)</span>. The model is still the same as shown in <a href="asm-flem.html#eq:flemmatrixvector">(2.8)</a>. The matrix <span class="math inline">\(X\)</span> has just one column with the measured values of the predictor variable and <span class="math inline">\(b\)</span> is just a scalar unknown parameter. The vector <span class="math inline">\(y\)</span> contains the observed values for the response values.</p>
+<p>The goal of the analysis of the simple dataset is to find an estimate of the scalar <span class="math inline">\(b\)</span> such that the linear combination of <span class="math inline">\(X\)</span> and <span class="math inline">\(b\)</span> best explains the values in <span class="math inline">\(y\)</span>. How we can find such an estimation procedure that allows us to calculate an estimate of <span class="math inline">\(b\)</span> is explained using a small example data set in the following subsection.</p>
+<div id="asm-flem-regression-example" class="section level3">
+<h3><span class="header-section-number">2.6.1</span> An Example Dataset</h3>
+<p>A widely use example dataset for such a simple regression analysis in animal breeding consists of measurements of <code>body weight</code> (BW) and <code>breast circumference</code> (BC) for a given group of animals.</p>
+<table>
+<caption><span id="tab:dataregression">Table 2.1: </span>Dataset for Regression of Body Weight on Breast Circumference for ten Animals</caption>
+<thead>
+<tr class="header">
+<th align="right">Animal</th>
+<th align="right">Breast Circumference</th>
+<th align="right">Body Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">176</td>
+<td align="right">471</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">177</td>
+<td align="right">463</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">178</td>
+<td align="right">481</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">179</td>
+<td align="right">470</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">179</td>
+<td align="right">496</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">180</td>
+<td align="right">491</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">181</td>
+<td align="right">518</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">182</td>
+<td align="right">511</td>
+</tr>
+<tr class="odd">
+<td align="right">9</td>
+<td align="right">183</td>
+<td align="right">510</td>
+</tr>
+<tr class="even">
+<td align="right">10</td>
+<td align="right">184</td>
+<td align="right">541</td>
+</tr>
+</tbody>
+</table>
+<p>The dataset shown above is taken from Table 9.1 in <span class="citation">(Essl <a href="#ref-Essl1987">1987</a>)</span>. One of the possible reasons for fitting a regression from BW on BC is that the latter is easier to measure. The measured values of BC can be used to predict BW once we have determined the regression coefficient. For this prediction, we use BW as response variable <span class="math inline">\(y\)</span> and BC as predictor variable <span class="math inline">\(x\)</span>. This leads to the regression model</p>
+<p><span class="math display" id="eq:regressionbwonbc">\[\begin{equation}
+  y = x * b + \epsilon
+  \tag{2.10}
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(y\)</span> is the vector of body weights and <span class="math inline">\(x\)</span> is the vector of breast circumferences. <span class="math inline">\(b\)</span> is a scalar value which is unknown and <span class="math inline">\(\epsilon\)</span> is the vector of random unknown error terms. The goal is to determine <span class="math inline">\(b\)</span> such that the predictor variable best explains the response variable. How <span class="math inline">\(b\)</span> is determined is explained with the following plot.</p>
+<div class="figure"><span id="fig:showregressionbwonbc"></span>
+<img src="odg/showregressionbwonbc.png" alt="Regression of Body Weight On Breast Circumference"  />
+<p class="caption">
+Figure 2.2: Regression of Body Weight On Breast Circumference
+</p>
+</div>
+<p>In Figure <a href="asm-flem.html#fig:showregressionbwonbc">2.2</a> the blue points correspond to the data points given by the dataset shown in Table <a href="asm-flem.html#tab:dataregression">2.1</a>. The red line corresponds to the regression line defined by the unknown regression parameter <span class="math inline">\(b\)</span>. The distance between the data points to the projection in the direction of the <span class="math inline">\(y\)</span>-axis corresponds to the residual <span class="math inline">\(r\)</span>. For a given data point <span class="math inline">\(i\)</span>, the residual <span class="math inline">\(r_i\)</span> is computed as</p>
+<p><span class="math display" id="eq:definitionresidual">\[\begin{equation}
+  r_i = y_i - x_i * \hat{b}
+  \tag{2.11}
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(\hat{b}\)</span> denotes a concrete estimated value of <span class="math inline">\(b\)</span>. For a different choice of a value of <span class="math inline">\(\hat{b}\)</span>, different values for the residuals <span class="math inline">\(r_i\)</span> can be computed. Our goal is to find the value of <span class="math inline">\(\hat{b}\)</span> that results in the smallest residuals <span class="math inline">\(r_i\)</span>. In order to avoid cancellation of positive and negative values of the residuals, the <span class="math inline">\(r_i\)</span> values are squared and added. This sum of the squared residuals is used as a measure of how good a given regression line determined by <span class="math inline">\(\hat{b}\)</span> fits a given set of data points. Because we want to have a good fit this means that the sum of the squared residuals should be as small as possible.</p>
+<p>The method that determines <span class="math inline">\(\hat{b}\)</span> such that the sum of the squared residuals is minimal is called <strong>Least Squares</strong>. In a general formula with more than one predictor variables we can write the least squares estimate <span class="math inline">\(\hat{b}_{LS}\)</span> as</p>
+<p><span class="math display" id="eq:leastsquaresestimate">\[\begin{equation}
+  \hat{b}_{LS} = argmin_b ||y - Xb||^2
+  \tag{2.12}
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(||.||\)</span> denotes the Euclidean norm. The estimate <span class="math inline">\(\hat{b}_{LS}\)</span> can be found by finding the minimum of <span class="math inline">\(||y - Xb||^2\)</span>. The minimum of <span class="math inline">\(||y - Xb||^2\)</span> is found by first taking the derivative with respect to <span class="math inline">\(b\)</span> and the setting that derivative to <span class="math inline">\(0\)</span>. The derivative of <span class="math inline">\(||y - Xb||^2\)</span> with respect to <span class="math inline">\(b\)</span> can be computed as follows</p>
+<p><span class="math display" id="eq:computels">\[\begin{equation}
+  LS = ||y - Xb||^2 = (y - Xb)^T(y - Xb) = y^Ty - y^TXb - b^TX^Ty + b^TX^TXb
+  \tag{2.13}
+\end{equation}\]</span></p>
+<p>The derivative of <span class="math inline">\(LS\)</span> with respect to <span class="math inline">\(b\)</span> is</p>
+<p><span class="math display" id="eq:partiallswrtb">\[\begin{equation}
+  \frac{\partial LS}{\partial b} = -y^TX - y^TX + 2*b^TX^TX
+  \tag{2.14}
+\end{equation}\]</span></p>
+<p>The minimum is found by setting <span class="math inline">\(\frac{\partial LS}{\partial b}\)</span> to <span class="math inline">\(0\)</span>.</p>
+<p><span class="math display" id="eq:minimumls">\[\begin{equation}
+  \frac{\partial LS}{\partial b} = -y^TX - y^TX + 2*\hat{b}^TX^TX = 0
+  \tag{2.15}
+\end{equation}\]</span></p>
+<p>From equation <a href="asm-flem.html#eq:minimumls">(2.15)</a>, we get the so-called least squares <strong>Normal Equations</strong> for <span class="math inline">\(\hat{b}\)</span>.</p>
+<p><span class="math display" id="eq:lsnormalequations">\[\begin{equation}
+   X^TX\hat{b} = X^Ty
+  \tag{2.16}
+\end{equation}\]</span></p>
+<p>For a regression model, we know that <span class="math inline">\(X\)</span> has full column rank<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>. That means we can solve the normal equations <a href="asm-flem.html#eq:lsnormalequations">(2.16)</a> explicitly for <span class="math inline">\(\hat{b}\)</span>.</p>
+<p><span class="math display" id="eq:solutionhatb">\[\begin{equation}
+   \hat{b} = (X^TX)^{-1}X^Ty
+  \tag{2.17}
+\end{equation}\]</span></p>
+<p>Equation <a href="asm-flem.html#eq:solutionhatb">(2.17)</a> presents a solution to the estimation problem of the unknown parameter <span class="math inline">\(b\)</span> in the regression problem. There is one additional unknown parameter that we have not mentioned so far. The regression model contains the random error terms <span class="math inline">\(\epsilon\)</span>. Because <span class="math inline">\(\epsilon\)</span> is random, we have to specify the expected value and the variance. The error terms are deviations of the predicted values from the observed data points. Hence the expected values <span class="math inline">\(E\left[\epsilon \right]\)</span> must be <span class="math inline">\(0\)</span>. The variance <span class="math inline">\(\sigma^2\)</span> of the error terms is an additional unknown parameter that has to be estimated from the data. One way of estimating the error variance from the data is shown in subsection <a href="asm-flem.html#asm-flem-error-variance">2.6.2</a>.</p>
+</div>
+<div id="asm-flem-error-variance" class="section level3">
+<h3><span class="header-section-number">2.6.2</span> Variance of Errors</h3>
+<p>The least squares procedure itself does not yield an estimate of the error variance <span class="math inline">\(\sigma^2\)</span>. But the estimate of <span class="math inline">\(\sigma^2\)</span> based on the residuals is often declared to be the <code>least squares estimate</code> of <span class="math inline">\(\sigma^2\)</span>. The residuals <span class="math inline">\(r_i\)</span> as defined in <a href="asm-flem.html#eq:definitionresidual">(2.11)</a> are estimates of the error terms <span class="math inline">\(\epsilon_i\)</span>. As a matter of fact the residuals can be used to estimate <span class="math inline">\(\sigma^2\)</span>. This estimate is given by</p>
+<p><span class="math display" id="eq:lsestimateerrorvariance">\[\begin{equation}
+  \widehat{\sigma^2} = \frac{1}{n-p} \sum_{i=1}^n r_i^2
+  \tag{2.18}
+\end{equation}\]</span></p>
+<p>The factor <span class="math inline">\((n-p)^{-1}\)</span> in <a href="asm-flem.html#eq:lsestimateerrorvariance">(2.18)</a> is used, because it leads the estimate <span class="math inline">\(\widehat{\sigma^2}\)</span> to be unbiased, which means <span class="math inline">\(E\left[\widehat{\sigma^2} \right] = \sigma^2\)</span>.</p>
+</div>
+</div>
+<div id="asm-flem-types-of-regression" class="section level2">
+<h2><span class="header-section-number">2.7</span> Different Types of Linear Regressions</h2>
+<div id="asm-flem-regression-origin" class="section level3">
+<h3><span class="header-section-number">2.7.1</span> Regression Through The Origin</h3>
+<p>The regression model as it was proposed in <a href="asm-flem.html#eq:regressionbwonbc">(2.10)</a> for the dataset of body weight and breast circumference defines a line in the <span class="math inline">\(x-y\)</span>-plane. This line shown in Figure <a href="asm-flem.html#fig:showregressionbwonbc">2.2</a>. What is not shown in the plot, but what becomes clear from the model is that the regression line goes through the origin of the coordinate system. Mathematically the origin is given by <span class="math inline">\(x=0\)</span> and <span class="math inline">\(y=0\)</span>. In this regression model, the origin is the fixed point which is on the regression line. The fixed point together with the estimated regression coefficient <span class="math inline">\(\hat{b}\)</span> uniquely define the regression line. From a geometrical point of view the estimated regression coefficient defines the slope of the regression line.</p>
+</div>
+<div id="asm-flem-regression-intercept" class="section level3">
+<h3><span class="header-section-number">2.7.2</span> Regression With Intercept</h3>
+<p>Depending on the data analysed with a regression model, it does not make sense to force the regression line to run through the origin. This can be avoided by including an additional fixed term in the regression model. This term is called the <strong>intercept</strong>. A regression model with an intercept can be written as</p>
+<p><span class="math display" id="eq:regressionintercept">\[\begin{equation}
+  y_i = b_0 + x_i * b_1 + \epsilon_i
+  \tag{2.19}
+\end{equation}\]</span></p>
+<p>The term <span class="math inline">\(b_0\)</span> corresponds to the value of the response variable <span class="math inline">\(y\)</span> when the value of the predictor <span class="math inline">\(x\)</span> is <span class="math inline">\(0\)</span>. Then the fixed point of the regression line is no longer the origin, but the point <span class="math inline">\(x = 0\)</span> and <span class="math inline">\(y = \widehat{b_0}\)</span>. The slope of the regression line is determined by <span class="math inline">\(\widehat{b_1}\)</span>. In matrix-vector notation the intercept <span class="math inline">\(b_0\)</span> is added to the vector of unknown parameters <span class="math inline">\(b\)</span> and the design-matrix <span class="math inline">\(X\)</span> has to be augmented by a column of all ones on the left.</p>
+</div>
+<div id="asm-flem-regression-transformed-predictors" class="section level3">
+<h3><span class="header-section-number">2.7.3</span> Regression With Transformed Predictor Variables</h3>
+<p>Regression models can also contain different transformations of the predictor variables. As an example, we can include any higher order polynomial functions of predictor variables such as</p>
+<p><span class="math display" id="eq:polynomialregression">\[\begin{equation}
+  y_i = b_0 + b_1 * x_i + b_2 * x_i^2 + \cdots + b_k * x_i^k + \epsilon_i
+  \tag{2.20}
+\end{equation}\]</span></p>
+<p>Although the model <a href="asm-flem.html#eq:polynomialregression">(2.20)</a> contains non-linear functions of the predictors <span class="math inline">\(x_i\)</span>, the function is still linear in the unknown parameters <span class="math inline">\(b_j\)</span> (<span class="math inline">\(j = 1, \ldots k\)</span>) and hence the model <a href="asm-flem.html#eq:polynomialregression">(2.20)</a> is still a linear regression model.</p>
+<p>Transformations of the predictor variables are not restricted to polynomial functions. Many different kinds of transformations are possible. An example is shown in the following equation</p>
+<p><span class="math display" id="eq:generalregression">\[\begin{equation}
+  y_i = b_0 + b_1 * log(x_i) + b_2 * sin(\pi x_i) + \epsilon_i
+  \tag{2.21}
+\end{equation}\]</span></p>
+</div>
+</div>
+<div id="asm-flem-prediction" class="section level2">
+<h2><span class="header-section-number">2.8</span> Predictions</h2>
+<p>One goal of estimating the regression coefficient was that we want to be able to predict the response based on concrete values of the predictor variables. For our example with the body weight and the breast circumference, this means that we want to measure the breast circumference of an animal for which we do not know the body weight. Then based on the estimated regression coefficient, we want to be able to predict the body weight of that animal.</p>
+<p>The computation of the regression coefficient for the dataset shown in Table <a href="asm-flem.html#tab:dataregression">2.1</a> will be the topic of an exercise. But let us assume that we have computed the value of <span class="math inline">\(\hat{b}\)</span>, then the predicted value of the body weight <span class="math inline">\(\widehat{y_s}\)</span> for an animal <span class="math inline">\(s\)</span> is computed based on the measured breast circumference <span class="math inline">\(x_s\)</span> of animal <span class="math inline">\(s\)</span> as follows</p>
+<p><span class="math display" id="eq:predictbwonbc">\[\begin{equation}
+  \widehat{y_s} = \hat{b} * x_s
+  \tag{2.22}
+\end{equation}\]</span></p>
+<p>It has to be noted that the prediction <span class="math inline">\(\widehat{y_s}\)</span> is only valid, if the measured value <span class="math inline">\(x_s\)</span> is close to the measured predictors that were used to estimate <span class="math inline">\(\hat{b}\)</span>. For our example with body weight and breast circumference, we could not use the same regression line to predict the body weight for calves, if <span class="math inline">\(\hat{b}\)</span> was estimated with data of adult bulls.</p>
+</div>
+<div id="asm-flem-reg-dummy" class="section level2">
+<h2><span class="header-section-number">2.9</span> Regression On Dummy Variables</h2>
+<p>In a regression model (such as shown in <a href="asm-flem.html#eq:regressionbwonbc">(2.10)</a>) both the response variable and the predictor variables are continuous variables. Examples of such variables are <code>body weight</code> and <code>breast circumference</code> which are both measured and the measurements are expressed as real numbers. In contrast to such a regression model, the statistical model shown in <a href="asm-flem.html#eq:basisstatisticalmodel">(2.6)</a> has a continuous response, but the predictor variables are discrete variables. The predictor variables are assumed to be genotypes of a certain set of SNP genotypes and hence these genotypes can only have a fixed number of states. Under the assumption of bi-allelic Loci, a SNP locus can have just three genotypes and hence the predictor variable that is used to represent any given SNP-locus can only take three discrete states.</p>
+<p>Figure <a href="asm-flem.html#fig:compareregflem">2.3</a> shows the difference between a regression model as the one of <code>body weight</code> on <code>breast circumference</code> and a fixed linear effects model where one locus has an effect on a quantitative trait. In the left diagram of Figure <a href="asm-flem.html#fig:compareregflem">2.3</a> the red line denotes the regression line. This line is meaningful because on the x-axis and on the y-axis every single point of the red line would be valid observations. On the x-axis of the diagram on the righthand side, only three values are possible. In the diagram they are shown as Genotypes <span class="math inline">\(G_1G_1\)</span>, <span class="math inline">\(G_1G_2\)</span> and <span class="math inline">\(G_2G_2\)</span>. We will see very soon that in our statistical model, they will be encoded by <span class="math inline">\(1\)</span>, <span class="math inline">\(0\)</span> and <span class="math inline">\(-1\)</span>. The response variable in the diagram on the right of Figure <a href="asm-flem.html#fig:compareregflem">2.3</a> is a continuous random variable, similarly to the regression model shown in the left diagram. This combination of continuous response variable on a discrete type of variable lead to the term <strong>regression on dummy variables</strong> because the predictor variables are not continuous but just discrete levels of a certain factor. In this lecture, we are using <strong>fixed linear effects model</strong> rather than regression on dummy variables for the same type of model. The term of fixed linear effects model was used, because in the next chapter in Genomic BLUP we are going to introduce mixed linear effects model which are an extension of the fixed linear effects model used in this chapter.</p>
+<div class="figure"><span id="fig:compareregflem"></span>
+<img src="odg/compareregflem.png" alt="Comparison Between Regression Model And Fixed Linear Effects Model With An SNP-Locus As A Discrete Predictor Variables"  />
+<p class="caption">
+Figure 2.3: Comparison Between Regression Model And Fixed Linear Effects Model With An SNP-Locus As A Discrete Predictor Variables
+</p>
+</div>
+<div id="asm-flem-flem-for-snp" class="section level3">
+<h3><span class="header-section-number">2.9.1</span> Fixed Linear Effects Model For SNP Data</h3>
+<p>We are using genetic data and assume that the SNP genotypes have an effect on a quantitative trait. Our goal is to predict genomic breeding values based on the information from the SNP genotypes for the quantitative traits. We have seen that under some simplifying assumptions of additivity of the genetic effects, the genomic breeding values depend on the absolute value of the genotypic values (<span class="math inline">\(a\)</span> values) of the homozygous SNP genotypes. Hence all we need to know from our analysis of the data under a fixed linear effects model are the <span class="math inline">\(a\)</span> values for each SNP locus. The decomposition of the phenotypic observation shown in <a href="asm-flem.html#asm-flem-genetic-model">2.4.1</a> under the assumed genetic model tells us that the phenotypic observation can be explained as a linear function of the genotypic values of the SNP genotypes plus a random error term. The fact that our genetic model is a fixed linear effects model that uses phenotypic observations as response and SNP loci as predictors allows us to set up the following model for an example data set shown in the following subsection.</p>
+</div>
+<div id="asm-flem-snp-obs" class="section level3">
+<h3><span class="header-section-number">2.9.2</span> Example Data Set With SNP Loci And A Phenotypic Observation</h3>
+<p>We are using the dataset shown in Table <a href="asm-flem.html#tab:dataflemsnpobs">2.2</a> as an example on how to use a fixed linear effects model to estimate the genotypic value of the SNP genotypes.</p>
+<table>
+<caption><span id="tab:dataflemsnpobs">Table 2.2: </span>Animals With Two SNP Loci Affecting A Quantitative Trait</caption>
+<thead>
+<tr class="header">
+<th align="right">Animal</th>
+<th align="left">SNP G</th>
+<th align="left">Genotypic Value G</th>
+<th align="left">SNP H</th>
+<th align="left">Genotypic Value H</th>
+<th align="right">Observation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left"><span class="math inline">\(G_1G_1\)</span></td>
+<td align="left"><span class="math inline">\(a_G\)</span></td>
+<td align="left"><span class="math inline">\(H_1H_2\)</span></td>
+<td align="left"><span class="math inline">\(0\)</span></td>
+<td align="right">510</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left"><span class="math inline">\(G_1G_2\)</span></td>
+<td align="left"><span class="math inline">\(0\)</span></td>
+<td align="left"><span class="math inline">\(H_1H_1\)</span></td>
+<td align="left"><span class="math inline">\(a_H\)</span></td>
+<td align="right">528</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="left"><span class="math inline">\(G_1G_2\)</span></td>
+<td align="left"><span class="math inline">\(0\)</span></td>
+<td align="left"><span class="math inline">\(H_1H_1\)</span></td>
+<td align="left"><span class="math inline">\(a_H\)</span></td>
+<td align="right">505</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="left"><span class="math inline">\(G_1G_1\)</span></td>
+<td align="left"><span class="math inline">\(a_G\)</span></td>
+<td align="left"><span class="math inline">\(H_2H_2\)</span></td>
+<td align="left"><span class="math inline">\(-a_H\)</span></td>
+<td align="right">539</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="left"><span class="math inline">\(G_1G_1\)</span></td>
+<td align="left"><span class="math inline">\(a_G\)</span></td>
+<td align="left"><span class="math inline">\(H_1H_1\)</span></td>
+<td align="left"><span class="math inline">\(a_H\)</span></td>
+<td align="right">530</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="left"><span class="math inline">\(G_1G_2\)</span></td>
+<td align="left"><span class="math inline">\(0\)</span></td>
+<td align="left"><span class="math inline">\(H_1H_2\)</span></td>
+<td align="left"><span class="math inline">\(0\)</span></td>
+<td align="right">489</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="left"><span class="math inline">\(G_1G_2\)</span></td>
+<td align="left"><span class="math inline">\(0\)</span></td>
+<td align="left"><span class="math inline">\(H_2H_2\)</span></td>
+<td align="left"><span class="math inline">\(-a_H\)</span></td>
+<td align="right">486</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="left"><span class="math inline">\(G_2G_2\)</span></td>
+<td align="left"><span class="math inline">\(-a_G\)</span></td>
+<td align="left"><span class="math inline">\(H_1H_1\)</span></td>
+<td align="left"><span class="math inline">\(a_H\)</span></td>
+<td align="right">485</td>
+</tr>
+<tr class="odd">
+<td align="right">9</td>
+<td align="left"><span class="math inline">\(G_1G_2\)</span></td>
+<td align="left"><span class="math inline">\(0\)</span></td>
+<td align="left"><span class="math inline">\(H_2H_2\)</span></td>
+<td align="left"><span class="math inline">\(-a_H\)</span></td>
+<td align="right">478</td>
+</tr>
+<tr class="even">
+<td align="right">10</td>
+<td align="left"><span class="math inline">\(G_2G_2\)</span></td>
+<td align="left"><span class="math inline">\(-a_G\)</span></td>
+<td align="left"><span class="math inline">\(H_1H_2\)</span></td>
+<td align="left"><span class="math inline">\(0\)</span></td>
+<td align="right">479</td>
+</tr>
+<tr class="odd">
+<td align="right">11</td>
+<td align="left"><span class="math inline">\(G_1G_1\)</span></td>
+<td align="left"><span class="math inline">\(a_G\)</span></td>
+<td align="left"><span class="math inline">\(H_1H_2\)</span></td>
+<td align="left"><span class="math inline">\(0\)</span></td>
+<td align="right">520</td>
+</tr>
+<tr class="even">
+<td align="right">12</td>
+<td align="left"><span class="math inline">\(G_1G_1\)</span></td>
+<td align="left"><span class="math inline">\(a_G\)</span></td>
+<td align="left"><span class="math inline">\(H_1H_1\)</span></td>
+<td align="left"><span class="math inline">\(a_H\)</span></td>
+<td align="right">521</td>
+</tr>
+<tr class="odd">
+<td align="right">13</td>
+<td align="left"><span class="math inline">\(G_2G_2\)</span></td>
+<td align="left"><span class="math inline">\(-a_G\)</span></td>
+<td align="left"><span class="math inline">\(H_1H_2\)</span></td>
+<td align="left"><span class="math inline">\(0\)</span></td>
+<td align="right">473</td>
+</tr>
+<tr class="even">
+<td align="right">14</td>
+<td align="left"><span class="math inline">\(G_2G_2\)</span></td>
+<td align="left"><span class="math inline">\(-a_G\)</span></td>
+<td align="left"><span class="math inline">\(H_1H_2\)</span></td>
+<td align="left"><span class="math inline">\(0\)</span></td>
+<td align="right">457</td>
+</tr>
+<tr class="odd">
+<td align="right">15</td>
+<td align="left"><span class="math inline">\(G_1G_2\)</span></td>
+<td align="left"><span class="math inline">\(0\)</span></td>
+<td align="left"><span class="math inline">\(H_1H_1\)</span></td>
+<td align="left"><span class="math inline">\(a_H\)</span></td>
+<td align="right">497</td>
+</tr>
+<tr class="even">
+<td align="right">16</td>
+<td align="left"><span class="math inline">\(G_1G_2\)</span></td>
+<td align="left"><span class="math inline">\(0\)</span></td>
+<td align="left"><span class="math inline">\(H_1H_2\)</span></td>
+<td align="left"><span class="math inline">\(0\)</span></td>
+<td align="right">516</td>
+</tr>
+<tr class="odd">
+<td align="right">17</td>
+<td align="left"><span class="math inline">\(G_1G_1\)</span></td>
+<td align="left"><span class="math inline">\(a_G\)</span></td>
+<td align="left"><span class="math inline">\(H_1H_2\)</span></td>
+<td align="left"><span class="math inline">\(0\)</span></td>
+<td align="right">524</td>
+</tr>
+<tr class="even">
+<td align="right">18</td>
+<td align="left"><span class="math inline">\(G_1G_1\)</span></td>
+<td align="left"><span class="math inline">\(a_G\)</span></td>
+<td align="left"><span class="math inline">\(H_1H_2\)</span></td>
+<td align="left"><span class="math inline">\(0\)</span></td>
+<td align="right">502</td>
+</tr>
+<tr class="odd">
+<td align="right">19</td>
+<td align="left"><span class="math inline">\(G_1G_1\)</span></td>
+<td align="left"><span class="math inline">\(a_G\)</span></td>
+<td align="left"><span class="math inline">\(H_2H_2\)</span></td>
+<td align="left"><span class="math inline">\(-a_H\)</span></td>
+<td align="right">508</td>
+</tr>
+<tr class="even">
+<td align="right">20</td>
+<td align="left"><span class="math inline">\(G_1G_2\)</span></td>
+<td align="left"><span class="math inline">\(0\)</span></td>
+<td align="left"><span class="math inline">\(H_1H_2\)</span></td>
+<td align="left"><span class="math inline">\(0\)</span></td>
+<td align="right">506</td>
+</tr>
+</tbody>
+</table>
+<p>Instead of fitting individual effects for the different SNP genotypes to explain the response variable, we are directly including the genotypic values <span class="math inline">\(a_G\)</span> and <span class="math inline">\(a_H\)</span> into the fixed effects linear model. How the genotypic values are related to the SNP genotypes is also shown in Table <a href="asm-flem.html#tab:dataflemsnpobs">2.2</a>. For all animals in Table <a href="asm-flem.html#tab:dataflemsnpobs">2.2</a>, we can write the model equations in matrix-vector notation as</p>
+<p><span class="math display" id="eq:flemsnp">\[\begin{equation}
+  y = Xb + \epsilon
+  \tag{2.23}
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(y\)</span> is the vector of observations, <span class="math inline">\(b\)</span> is a vector of genotypic values plus an intercept, <span class="math inline">\(X\)</span> is a design matrix linking the elements in <span class="math inline">\(b\)</span> to <span class="math inline">\(y\)</span> and <span class="math inline">\(\epsilon\)</span> is a vector of random errors. Writing out the matrices and vectors leads to</p>
+<p><span class="math display">\[\begin{equation}
+\left[\begin{array}{r}
+  510 \\ 
+  528 \\ 
+  505 \\ 
+  539 \\ 
+  530 \\ 
+  489 \\ 
+  486 \\ 
+  485 \\ 
+  478 \\ 
+  479 \\ 
+  520 \\ 
+  521 \\ 
+  473 \\ 
+  457 \\ 
+  497 \\ 
+  516 \\ 
+  524 \\ 
+  502 \\ 
+  508 \\ 
+  506 \\ 
+  \end{array} 
+\right]
+ = 
+\left[\begin{array}{rrr}
+  1 &amp; 1 &amp; 0 \\ 
+  1 &amp; 0 &amp; 1 \\ 
+  1 &amp; 0 &amp; 1 \\ 
+  1 &amp; 1 &amp; -1 \\ 
+  1 &amp; 1 &amp; 1 \\ 
+  1 &amp; 0 &amp; 0 \\ 
+  1 &amp; 0 &amp; -1 \\ 
+  1 &amp; -1 &amp; 1 \\ 
+  1 &amp; 0 &amp; -1 \\ 
+  1 &amp; -1 &amp; 0 \\ 
+  1 &amp; 1 &amp; 0 \\ 
+  1 &amp; 1 &amp; 1 \\ 
+  1 &amp; -1 &amp; 0 \\ 
+  1 &amp; -1 &amp; 0 \\ 
+  1 &amp; 0 &amp; 1 \\ 
+  1 &amp; 0 &amp; 0 \\ 
+  1 &amp; 1 &amp; 0 \\ 
+  1 &amp; 1 &amp; 0 \\ 
+  1 &amp; 1 &amp; -1 \\ 
+  1 &amp; 0 &amp; 0 \\ 
+  \end{array} 
+\right]
+\left[\centering
+\begin{array}{l}
+  b_0 \\ 
+  a_G \\ 
+  a_H \\ 
+  \end{array} 
+\right]
+ + \epsilon\end{equation}\]</span></p>
+</div>
+<div id="asm-flem-parameter-estimation" class="section level3">
+<h3><span class="header-section-number">2.9.3</span> Parameter Estimation In A Fixed Linear Effects Model</h3>
+<p>The goal for model <a href="asm-flem.html#eq:flemsnp">(2.23)</a> is to get an estimate for the unknown parameters <span class="math inline">\(b_0\)</span>, <span class="math inline">\(a_G\)</span> and <span class="math inline">\(a_H\)</span>. In section <a href="asm-flem.html#asm-flem-parameter-estimation">2.6</a> we saw how unknown parameters can be estimated for a regression model using least squares. When applying the least squares method, we did not make any assumptions about the predictor variables. The minimization of the sum of the squared residuals can also be applied for the fixed linear effects model. This minimization leads to the same normal equations</p>
+<p><span class="math display" id="eq:normalequationflem">\[\begin{equation}
+  X^TXb^{(0)} = X^Ty
+  \tag{2.24}
+\end{equation}\]</span></p>
+<p>So far everything was identical to the case of the regression model. But when trying to find a solution for <a href="asm-flem.html#eq:normalequationflem">(2.24)</a> we have to account for the different nature of the design matrix <span class="math inline">\(X\)</span>. In the regression model this matrix <span class="math inline">\(X\)</span> contains real numbers. In our example of a fixed linear effects model, the matrix <span class="math inline">\(X\)</span> just contains just the three number <span class="math inline">\(-1\)</span>, <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span><a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>. The fact that the matrix <span class="math inline">\(X\)</span> contains only a few discrete values makes it very likely that <span class="math inline">\(X\)</span> does not have full column rank. That means it is very likely that some columns of <span class="math inline">\(X\)</span> can be expressed as linear combinations of other columns. This linear dependence of the columns of <span class="math inline">\(X\)</span> causes the matrix <span class="math inline">\(X^TX\)</span> to be singular and hence the inverse of <span class="math inline">\(X^TX\)</span> cannot be computed. Whenever the matrix <span class="math inline">\(X^TX\)</span> is singular, the solution given in <a href="asm-flem.html#eq:solutionhatb">(2.17)</a> cannot be computed.</p>
+<p>The normal equations in <a href="asm-flem.html#eq:normalequationflem">(2.24)</a> are written with the symbol <span class="math inline">\(b^{(0)}\)</span> to denote that the equations do not have a single solution <span class="math inline">\(b^{(0)}\)</span> in the sense that we were able to compute them in the case of the regression model. In the case where <span class="math inline">\(X^TX\)</span> is singular, there are infinitely many solutions <span class="math inline">\(b^{(0)}\)</span>. These solutions can be expressed as</p>
+<p><span class="math display" id="eq:gensolnormalequationflem">\[\begin{equation}
+  b^{(0)} = (X^TX)^-X^Ty
+  \tag{2.25}
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\((X^TX)^-\)</span> stands for a <strong>generalized inverse</strong> of the matrix <span class="math inline">\(X^TX\)</span>. A generalized inverse <span class="math inline">\(G\)</span> of a given matrix <span class="math inline">\(A\)</span> is defined as the matrix that satisfies the equation <span class="math inline">\(AGA = A\)</span>. The matrix <span class="math inline">\(G\)</span> is not unique. Applying the concept of a generalized inverse to a system of equations <span class="math inline">\(Ax = y\)</span>, it can be shown that <span class="math inline">\(x = Gy\)</span> is a solution, if <span class="math inline">\(G\)</span> is a generalized inverse of <span class="math inline">\(A\)</span>. Because <span class="math inline">\(G\)</span> is not unique, there are infinitely many solutions corresponding to <span class="math inline">\(\tilde{x} = Gy + (GA - I)z\)</span> where <span class="math inline">\(z\)</span> can be an arbitrary vector of consistent order. Applying these statements concerning generalized inverses and solutions to systems of equations to <a href="asm-flem.html#eq:gensolnormalequationflem">(2.25)</a>, it means that <span class="math inline">\(b^{(0)}\)</span> is not a unique solution to <a href="asm-flem.html#eq:normalequationflem">(2.24)</a> because the generalized inverse <span class="math inline">\((X^TX)^-\)</span> is not unique. As a consequence of that the solution <span class="math inline">\(b^{(0)}\)</span> cannot be used as an estimate of the unknown parameter vector <span class="math inline">\(b\)</span>.</p>
+<p>The numeric solution of the analysis of the example dataset given in Table <a href="asm-flem.html#tab:dataflemsnpobs">2.2</a> is the topic of an exercise. When developing that solution, we will see that some linear functions of <span class="math inline">\(b^{(0)}\)</span> can be found which do not depend on the choice of the generalized inverse <span class="math inline">\((X^TX)^-\)</span>. Such functions are called <strong>estimable functions</strong> and can be used as estimates for the respective functions of the unknown parameter vector <span class="math inline">\(b\)</span>. Differences between different elements in the parameter vector <span class="math inline">\(b\)</span> are often used as estimable functions. More details about generalized inverses and estimable functions can be found in <span class="citation">(Searle <a href="#ref-Searle1971">1971</a>)</span>.</p>
+
+
+
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-Buehlmann2014">
+<p>Buehlmann, Peter, and Martin Maechler. 2014. “Computational Statistics Course.”</p>
+</div>
+<div id="ref-Essl1987">
+<p>Essl, Alois. 1987. <em>Statistische Mehoden in der Tierproduktion</em>. Wien: Österreichischer Agrarverlag.</p>
+</div>
+<div id="ref-Falconer1996">
+<p>Falconer, D. S., and Trudy F. C. Mackay. 1996. <em>Introduction to Quantitative Genetics</em>. 4th ed. Essex: Addison Wesley Longman Limited.</p>
+</div>
+<div id="ref-Lilja2016">
+<p>Lilja, David J. 2016. <em>Linear regression using R : an introduction to data modeling</em>. Minneapolis: University of Minnesota Libraries Publishing. <a href="https://open.umn.edu/opentextbooks/textbooks/linear-regression-using-r-an-introduction-to-data-modeling">https://open.umn.edu/opentextbooks/textbooks/linear-regression-using-r-an-introduction-to-data-modeling</a>.</p>
+</div>
+<div id="ref-Searle1971">
+<p>Searle, S R. 1971. <em>Linear Models</em>. Wiley Clas. New York: John Wiley &amp; Sons.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="2">
+<li id="fn2"><p>Implicitly, we are treating the SNP-markers to be identical with the underlying QTL. But based on the fact that we have very many SNPs spread over the complete genome, there will always be SNP sufficiently close to every QTL that influences a certain trait. But in reality the unknown QTL affect the traits and not the SNPs.<a href="asm-flem.html#fnref2" class="footnote-back">↩</a></p></li>
+<li id="fn3"><p>In reality <span class="math inline">\(k\)</span> can be <span class="math inline">\(1.5*10^5\)</span> for some commercial SNP chip platforms. When working with complete genomic sequences, <span class="math inline">\(k\)</span> can also be in the order of <span class="math inline">\(3*10^7\)</span>.<a href="asm-flem.html#fnref3" class="footnote-back">↩</a></p></li>
+<li id="fn4"><p>In a regression model, all values in the matrix <span class="math inline">\(X\)</span> are real values. Hence no column of <span class="math inline">\(X\)</span> will be a linear combination of any other columns and therefore <span class="math inline">\(X\)</span> has full column rank.<a href="asm-flem.html#fnref4" class="footnote-back">↩</a></p></li>
+<li id="fn5"><p>In most other fixed linear effects models, the design matrix contains just <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>.<a href="asm-flem.html#fnref5" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="asm-intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="intro-linalg.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/charlotte-ngs/GELASMSS2020/edit/master/cn_asm/02_flem.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-asmas-ss2020.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
