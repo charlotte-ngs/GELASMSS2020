@@ -146,8 +146,8 @@ knitr::kable(df_notes)
 s_sl_url <- paste0(sBaseUrl, "sl/")
 vec_topics_slides <- vec_topics
 # links zu slides
-vec_topics_slides[which(Datum == format(as.Date("2020/02/17"), "%d.%m"))] <- paste0("[](", s_sl_url, "", ")") 
-vec_topics_slides[which(Datum == format(as.Date("2020/02/24"), "%d.%m"))] <- paste0("[](", s_sl_url, "", ")") 
+vec_topics_slides[which(Datum == format(as.Date("2020/02/17"), "%d.%m"))] <- paste0("[Introduction](", s_sl_url, "w01/asm-w01-v01-intro.pdf)") 
+vec_topics_slides[which(Datum == format(as.Date("2020/02/24"), "%d.%m"))] <- paste0("[Linear Fixed Effects Models](", s_sl_url, "w02/asm-w02-v02-flem.pdf)") 
 vec_topics_slides[which(Datum == format(as.Date("2020/03/02"), "%d.%m"))] <- paste0("[](", s_sl_url, "", ")") 
 vec_topics_slides[which(Datum == format(as.Date("2020/03/09"), "%d.%m"))] <- paste0("[](", s_sl_url, "", ")") 
 vec_topics_slides[which(Datum == format(as.Date("2018/03/16"), "%d.%m"))] <- paste0("[](", s_sl_url, "", ")") 
