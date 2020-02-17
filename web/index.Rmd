@@ -172,7 +172,7 @@ knitr::kable(df_slides)
 s_ex_url <- paste0(sBaseUrl, "ex/")
 vec_topics_ex <- vec_topics
 vec_topics_ex[which(Datum == format(as.Date("2020/02/17"), "%d.%m"))] <- paste0("[](", s_ex_url, "", ")") 
-vec_topics_ex[which(Datum == format(as.Date("2020/02/24"), "%d.%m"))] <- paste0("[](", s_ex_url, "", ")") 
+vec_topics_ex[which(Datum == format(as.Date("2020/02/24"), "%d.%m"))] <- paste0("[Linear Fixed Effects Models](", s_ex_url, "w02/asm-w02-ex01.pdf)") 
 vec_topics_ex[which(Datum == format(as.Date("2020/03/02"), "%d.%m"))] <- paste0("[](", s_ex_url, "", ")") 
 vec_topics_ex[which(Datum == format(as.Date("2020/03/09"), "%d.%m"))] <- paste0("[](", s_ex_url, "", ")") 
 vec_topics_ex[which(Datum == format(as.Date("2018/03/16"), "%d.%m"))] <- paste0("[](", s_ex_url, "", ")") 
