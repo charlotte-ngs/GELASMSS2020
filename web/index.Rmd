@@ -67,7 +67,7 @@ More information on the excursion will be available from here. [here](`r paste0(
 
 
 ### Exercise Platform
-You can use the exercise platform to work on exercise problems. The platform is reachable at:
+You can use the exercise platform to work on exercise problems. The platform is reachable at: https://1-htz.quagzws.com/rstudio
 
 The username corresponds to the part of your E-Mail address before the `@`-sign. The password is sent to you via a different E-Mail.
 
