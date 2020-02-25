@@ -5,8 +5,7 @@ cat student-usernames-gelasmss2020 | while read s;do echo $s;../source/misctools
 
 
 # clone material for test student
-echo pvrgelasmss2020 | while read s;do echo $s;../source/misctools/github/clone.sh -s $s;sleep 2;done
+cat test-student-usernames-gelasmss2020 | while read s;do echo " * Clone for $s ...";sudo ../../source/misctools/github/clone.sh -s $s;sleep 2;done
 
-
-cat student-usernames-gelasmss2020 | while read s;do echo $s;../source/misctools/github/clone.sh -s $s;sleep 2;done
-
+# cloning material for real students
+cat student-usernames-gelasmss2020 | while read s;do echo " * Clone for $s ...";sudo ../../source/misctools/github/clone.sh -s $s;sleep 2;done
