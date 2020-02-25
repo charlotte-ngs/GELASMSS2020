@@ -1,0 +1,33 @@
+---
+title: "Generate Multiple Linear Regression"
+date: "2020-02-24"
+output: html_notebook
+---
+
+# Disclaimer
+The original `bw-bc` regression data is augmented by two more predictor variables `BCS` and `HEI`. 
+
+
+# Original Data
+The original `bw-bc` data is read
+
+```{r}
+s_data_root_online <- "https://charlotte-ngs.github.io/GELASMSS2020"
+s_data_root_local <- here::here() 
+s_data_dir <- "ex/w03/bw_bc_reg.csv"
+### # define data path depending on whether we are online or not
+b_online <- FALSE
+if (b_online){
+  s_data_root <- s_data_root_online
+} else {
+  s_data_root <- s_data_root_local
+}
+s_data_path <- file.path(s_data_root, s_data_dir)
+### # read data from s_data_path
+tbl_reg <- readr::read_csv(file = s_data_path)
+knitr::kable(tbl_reg,
+             booktabs = TRUE,
+             longtable = TRUE,
+             caption = "Dataset for Regression of Body Weight on Breast Circumference for ten Animals")
+```
+

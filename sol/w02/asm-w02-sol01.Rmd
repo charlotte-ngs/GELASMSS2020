@@ -31,6 +31,54 @@ knitr::kable(tbl_reg,
 * Verify your results using the function `lm` in R.
 
 ### Solution {-}
+* The regression coefficient $\hat{b}_{LS}$ is computed as
+
+$$\hat{b}_{LS} = (X^TX)^{-1}X^Ty$$
+
+* The matrix $X$ is
+
+```{r}
+nobs <- nrow(tbl_reg)
+X <- matrix(c(rep(1,nobs), tbl_reg$`Breast Circumference`), ncol = 2);X
+```
+
+* The vector $y$ is
+
+```{r}
+y <- tbl_reg$`Body Weight`;y
+```
+
+* The regression coefficient is then computed as
+
+```{r}
+xtx <- crossprod(X)
+xtx_inv <- solve(xtx)
+xty <- crossprod(X,y)
+b_ls <- crossprod(xtx_inv,xty)
+cat(" * Intercept: ", b_ls[1], "\n")
+cat(" * Slope: ", b_ls[2], "\n")
+```
+
+* The variance component of the errors is computed as
+
+$$\hat{\sigma^2} =  {1 \over n-p} \sum_{n=1}^n r_i^2$$
+
+```{r}
+n <- length(y)
+p <- length(b_ls)
+r <- y - X %*% b_ls
+sigma2_ls <- crossprod(r) / (n-p)
+cat(" * Error Variance: ", sigma2_ls, "\n")
+cat(" * Error SD: ", sqrt(sigma2_ls), "\n")
+```
+
+
+Verifying the results using `lm()`
+
+```{r}
+reg_bw_bc <- lm(`Body Weight` ~ `Breast Circumference`, data = tbl_reg)
+summary(reg_bw_bc)
+```
 
 
 ## Problem 2: Breeding Values {-}
