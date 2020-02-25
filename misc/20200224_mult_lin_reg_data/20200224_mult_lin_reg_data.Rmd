@@ -1,7 +1,9 @@
 ---
 title: "Generate Multiple Linear Regression"
-date: "2020-02-24"
-output: html_notebook
+output:
+  html_document:
+    df_print: paged
+date: '2020-02-24'
 ---
 
 # Disclaimer
@@ -29,5 +31,51 @@ knitr::kable(tbl_reg,
              booktabs = TRUE,
              longtable = TRUE,
              caption = "Dataset for Regression of Body Weight on Breast Circumference for ten Animals")
+```
+
+
+# Extended Data
+The existing data on body weight and breast circumference is extended by two more predictor variables. Both predictors are generated randomly. 
+
+```{r}
+set.seed(151413)
+nobs <- nrow(tbl_reg)
+l_bcs_par <- list(mean = 5, sd = 1.2)
+l_hei_par <- list(mean = 150, sd = 13.5)
+tbl_mult_reg <- tibble::add_column(tbl_reg, 
+                                   BCS = round(rnorm(n = nobs, mean = l_bcs_par$mean, sd = l_bcs_par$sd), digits = 1),
+                                   HEI = round(rnorm(n = nobs, mean = l_hei_par$mean, sd = l_hei_par$sd), digits = 0))
+knitr::kable(tbl_mult_reg,
+             booktabs = TRUE,
+             longtable = TRUE,
+             caption = "Dataset for Multiple Linear Regression of Body Weight")
+
+```
+
+
+# Writing Data To File
+To make the extended data available for the exercise, we have to write it to a file.
+
+```{r}
+s_mult_data_file <- "ex/w03/bw_mult_reg.csv"
+s_mult_data_path <- file.path(s_data_root, s_mult_data_file)
+readr::write_csv(tbl_mult_reg, path = s_mult_data_path)
+```
+
+
+# Multiple Linear Regression
+A test run for the multiple linear regression is done here. 
+
+```{r}
+mult_reg_bw <- lm(`Body Weight` ~ `Breast Circumference` + BCS + HEI, data = tbl_mult_reg)
+summary(mult_reg_bw)
+```
+
+
+# Model Selection
+By looking at the results alone, it is not clear which model should be chosen. Let us have a look at the different model selection tools.
+
+```{r}
+
 ```
 

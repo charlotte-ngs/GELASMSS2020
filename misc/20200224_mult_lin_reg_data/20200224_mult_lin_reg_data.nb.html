@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
@@ -1700,6 +1699,7 @@ summary {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -1760,12 +1760,52 @@ summary {
 <p>The original <code>bw-bc</code> data is read</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc19kYXRhX3Jvb3Rfb25saW5lIDwtIFwiaHR0cHM6Ly9jaGFybG90dGUtbmdzLmdpdGh1Yi5pby9HRUxBU01TUzIwMjBcIlxuc19kYXRhX3Jvb3RfbG9jYWwgPC0gaGVyZTo6aGVyZSgpIFxuc19kYXRhX2RpciA8LSBcImV4L3cwMy9id19iY19yZWcuY3N2XCJcbiMjIyAjIGRlZmluZSBkYXRhIHBhdGggZGVwZW5kaW5nIG9uIHdoZXRoZXIgd2UgYXJlIG9ubGluZSBvciBub3RcbmJfb25saW5lIDwtIEZBTFNFXG5pZiAoYl9vbmxpbmUpe1xuICBzX2RhdGFfcm9vdCA8LSBzX2RhdGFfcm9vdF9vbmxpbmVcbn0gZWxzZSB7XG4gIHNfZGF0YV9yb290IDwtIHNfZGF0YV9yb290X2xvY2FsXG59XG5zX2RhdGFfcGF0aCA8LSBmaWxlLnBhdGgoc19kYXRhX3Jvb3QsIHNfZGF0YV9kaXIpXG4jIyMgIyByZWFkIGRhdGEgZnJvbSBzX2RhdGFfcGF0aFxudGJsX3JlZyA8LSByZWFkcjo6cmVhZF9jc3YoZmlsZSA9IHNfZGF0YV9wYXRoKVxua25pdHI6OmthYmxlKHRibF9yZWcsXG4gICAgICAgICAgICAgYm9va3RhYnMgPSBUUlVFLFxuICAgICAgICAgICAgIGxvbmd0YWJsZSA9IFRSVUUsXG4gICAgICAgICAgICAgY2FwdGlvbiA9IFwiRGF0YXNldCBmb3IgUmVncmVzc2lvbiBvZiBCb2R5IFdlaWdodCBvbiBCcmVhc3QgQ2lyY3VtZmVyZW5jZSBmb3IgdGVuIEFuaW1hbHNcIilcbmBgYCJ9 -->
+<pre class="r"><code>s_data_root_online &lt;- &quot;https://charlotte-ngs.github.io/GELASMSS2020&quot;
+s_data_root_local &lt;- here::here() 
+s_data_dir &lt;- &quot;ex/w03/bw_bc_reg.csv&quot;
+### # define data path depending on whether we are online or not
+b_online &lt;- FALSE
+if (b_online){
+  s_data_root &lt;- s_data_root_online
+} else {
+  s_data_root &lt;- s_data_root_local
+}
+s_data_path &lt;- file.path(s_data_root, s_data_dir)
+### # read data from s_data_path
+tbl_reg &lt;- readr::read_csv(file = s_data_path)
+knitr::kable(tbl_reg,
+             booktabs = TRUE,
+             longtable = TRUE,
+             caption = &quot;Dataset for Regression of Body Weight on Breast Circumference for ten Animals&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<div id="extended-data" class="section level2">
+<h2>Extended Data</h2>
+<p>The existing data on body weight and breast circumference is extended by two more predictor variables. Both predictors are generated randomly.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubm9icyA8LSBucm93KHRibF9yZWcpXG5sX2Jjc19wYXIgPC0gbGlzdChtZWFuID0gNSwgc2QgPSAxLjIpXG5sX2hlaV9wYXIgPC0gbGlzdChtZWFuID0gMTUwLCBzZCA9IDEzLjUpXG50YmxfZXh0ZW5zaW9uIDwtIHRpYmJsZTo6dGliYmxlKEJDUyA9IHJub3JtKG4gPSBub2JzLCBtZWFuID0gbF9iY3NfcGFyJG1lYW4sIHNkID0gbF9iY3NfcGFyJHNkKSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIEhFSSA9IHJub3JtKG4gPSBub2JzLCBtZWFuID0gbF9oZWlfcGFyJG1lYW4sIHNkID0gbF9oZWlfcGFyJHNkKSApIFxudGJsX211bHRfcmVnIDwtIHRpYmJsZTo6YWRkX2NvbHVtbih0YmxfcmVnLCB0YmxfZXh0ZW5zaW9uKVxua25pdHI6OmthYmxlKHRibF9tdWx0X3JlZyxcbiAgICAgICAgICAgICBib29rdGFicyA9IFRSVUUsXG4gICAgICAgICAgICAgbG9uZ3RhYmxlID0gVFJVRSxcbiAgICAgICAgICAgICBjYXB0aW9uID0gXCJEYXRhc2V0IGZvciBNdWx0aXBsZSBMaW5lYXIgUmVncmVzc2lvbiBvZiBCb2R5IFdlaWdodFwiKVxuXG5gYGAifQ== -->
+<pre class="r"><code>nobs &lt;- nrow(tbl_reg)
+l_bcs_par &lt;- list(mean = 5, sd = 1.2)
+l_hei_par &lt;- list(mean = 150, sd = 13.5)
+tbl_extension &lt;- tibble::tibble(BCS = rnorm(n = nobs, mean = l_bcs_par$mean, sd = l_bcs_par$sd),
+                                 HEI = rnorm(n = nobs, mean = l_hei_par$mean, sd = l_hei_par$sd) ) 
+tbl_mult_reg &lt;- tibble::add_column(tbl_reg, tbl_extension)
+knitr::kable(tbl_mult_reg,
+             booktabs = TRUE,
+             longtable = TRUE,
+             caption = &quot;Dataset for Multiple Linear Regression of Body Weight&quot;)
+</code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 </div>
+</div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiR2VuZXJhdGUgTXVsdGlwbGUgTGluZWFyIFJlZ3Jlc3Npb24iCmRhdGU6ICIyMDIwLTAyLTI0IgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgojIERpc2NsYWltZXIKVGhlIG9yaWdpbmFsIGBidy1iY2AgcmVncmVzc2lvbiBkYXRhIGlzIGF1Z21lbnRlZCBieSB0d28gbW9yZSBwcmVkaWN0b3IgdmFyaWFibGVzIGBCQ1NgIGFuZCBgSEVJYC4gCgoKIyBPcmlnaW5hbCBEYXRhClRoZSBvcmlnaW5hbCBgYnctYmNgIGRhdGEgaXMgcmVhZAoKYGBge3J9CnNfZGF0YV9yb290X29ubGluZSA8LSAiaHR0cHM6Ly9jaGFybG90dGUtbmdzLmdpdGh1Yi5pby9HRUxBU01TUzIwMjAiCnNfZGF0YV9yb290X2xvY2FsIDwtIGhlcmU6OmhlcmUoKSAKc19kYXRhX2RpciA8LSAiZXgvdzAzL2J3X2JjX3JlZy5jc3YiCiMjIyAjIGRlZmluZSBkYXRhIHBhdGggZGVwZW5kaW5nIG9uIHdoZXRoZXIgd2UgYXJlIG9ubGluZSBvciBub3QKYl9vbmxpbmUgPC0gRkFMU0UKaWYgKGJfb25saW5lKXsKICBzX2RhdGFfcm9vdCA8LSBzX2RhdGFfcm9vdF9vbmxpbmUKfSBlbHNlIHsKICBzX2RhdGFfcm9vdCA8LSBzX2RhdGFfcm9vdF9sb2NhbAp9CnNfZGF0YV9wYXRoIDwtIGZpbGUucGF0aChzX2RhdGFfcm9vdCwgc19kYXRhX2RpcikKIyMjICMgcmVhZCBkYXRhIGZyb20gc19kYXRhX3BhdGgKdGJsX3JlZyA8LSByZWFkcjo6cmVhZF9jc3YoZmlsZSA9IHNfZGF0YV9wYXRoKQprbml0cjo6a2FibGUodGJsX3JlZywKICAgICAgICAgICAgIGJvb2t0YWJzID0gVFJVRSwKICAgICAgICAgICAgIGxvbmd0YWJsZSA9IFRSVUUsCiAgICAgICAgICAgICBjYXB0aW9uID0gIkRhdGFzZXQgZm9yIFJlZ3Jlc3Npb24gb2YgQm9keSBXZWlnaHQgb24gQnJlYXN0IENpcmN1bWZlcmVuY2UgZm9yIHRlbiBBbmltYWxzIikKYGBgCgo=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiR2VuZXJhdGUgTXVsdGlwbGUgTGluZWFyIFJlZ3Jlc3Npb24iCmRhdGU6ICIyMDIwLTAyLTI0IgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgojIERpc2NsYWltZXIKVGhlIG9yaWdpbmFsIGBidy1iY2AgcmVncmVzc2lvbiBkYXRhIGlzIGF1Z21lbnRlZCBieSB0d28gbW9yZSBwcmVkaWN0b3IgdmFyaWFibGVzIGBCQ1NgIGFuZCBgSEVJYC4gCgoKIyBPcmlnaW5hbCBEYXRhClRoZSBvcmlnaW5hbCBgYnctYmNgIGRhdGEgaXMgcmVhZAoKYGBge3J9CnNfZGF0YV9yb290X29ubGluZSA8LSAiaHR0cHM6Ly9jaGFybG90dGUtbmdzLmdpdGh1Yi5pby9HRUxBU01TUzIwMjAiCnNfZGF0YV9yb290X2xvY2FsIDwtIGhlcmU6OmhlcmUoKSAKc19kYXRhX2RpciA8LSAiZXgvdzAzL2J3X2JjX3JlZy5jc3YiCiMjIyAjIGRlZmluZSBkYXRhIHBhdGggZGVwZW5kaW5nIG9uIHdoZXRoZXIgd2UgYXJlIG9ubGluZSBvciBub3QKYl9vbmxpbmUgPC0gRkFMU0UKaWYgKGJfb25saW5lKXsKICBzX2RhdGFfcm9vdCA8LSBzX2RhdGFfcm9vdF9vbmxpbmUKfSBlbHNlIHsKICBzX2RhdGFfcm9vdCA8LSBzX2RhdGFfcm9vdF9sb2NhbAp9CnNfZGF0YV9wYXRoIDwtIGZpbGUucGF0aChzX2RhdGFfcm9vdCwgc19kYXRhX2RpcikKIyMjICMgcmVhZCBkYXRhIGZyb20gc19kYXRhX3BhdGgKdGJsX3JlZyA8LSByZWFkcjo6cmVhZF9jc3YoZmlsZSA9IHNfZGF0YV9wYXRoKQprbml0cjo6a2FibGUodGJsX3JlZywKICAgICAgICAgICAgIGJvb2t0YWJzID0gVFJVRSwKICAgICAgICAgICAgIGxvbmd0YWJsZSA9IFRSVUUsCiAgICAgICAgICAgICBjYXB0aW9uID0gIkRhdGFzZXQgZm9yIFJlZ3Jlc3Npb24gb2YgQm9keSBXZWlnaHQgb24gQnJlYXN0IENpcmN1bWZlcmVuY2UgZm9yIHRlbiBBbmltYWxzIikKYGBgCgoKIyMgRXh0ZW5kZWQgRGF0YQpUaGUgZXhpc3RpbmcgZGF0YSBvbiBib2R5IHdlaWdodCBhbmQgYnJlYXN0IGNpcmN1bWZlcmVuY2UgaXMgZXh0ZW5kZWQgYnkgdHdvIG1vcmUgcHJlZGljdG9yIHZhcmlhYmxlcy4gQm90aCBwcmVkaWN0b3JzIGFyZSBnZW5lcmF0ZWQgcmFuZG9tbHkuIAoKYGBge3J9Cm5vYnMgPC0gbnJvdyh0YmxfcmVnKQpsX2Jjc19wYXIgPC0gbGlzdChtZWFuID0gNSwgc2QgPSAxLjIpCmxfaGVpX3BhciA8LSBsaXN0KG1lYW4gPSAxNTAsIHNkID0gMTMuNSkKdGJsX2V4dGVuc2lvbiA8LSB0aWJibGU6OnRpYmJsZShCQ1MgPSBybm9ybShuID0gbm9icywgbWVhbiA9IGxfYmNzX3BhciRtZWFuLCBzZCA9IGxfYmNzX3BhciRzZCksCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIEhFSSA9IHJub3JtKG4gPSBub2JzLCBtZWFuID0gbF9oZWlfcGFyJG1lYW4sIHNkID0gbF9oZWlfcGFyJHNkKSApIAp0YmxfbXVsdF9yZWcgPC0gdGliYmxlOjphZGRfY29sdW1uKHRibF9yZWcsIHRibF9leHRlbnNpb24pCmtuaXRyOjprYWJsZSh0YmxfbXVsdF9yZWcsCiAgICAgICAgICAgICBib29rdGFicyA9IFRSVUUsCiAgICAgICAgICAgICBsb25ndGFibGUgPSBUUlVFLAogICAgICAgICAgICAgY2FwdGlvbiA9ICJEYXRhc2V0IGZvciBNdWx0aXBsZSBMaW5lYXIgUmVncmVzc2lvbiBvZiBCb2R5IFdlaWdodCIpCgpgYGAKCgo=</div>
 
 
 
