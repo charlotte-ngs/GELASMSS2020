@@ -37,20 +37,20 @@ $$\hat{b}_{LS} = (X^TX)^{-1}X^Ty$$
 
 * The matrix $X$ is
 
-```{r}
+```{r, results='markup'}
 nobs <- nrow(tbl_reg)
 X <- matrix(c(rep(1,nobs), tbl_reg$`Breast Circumference`), ncol = 2);X
 ```
 
 * The vector $y$ is
 
-```{r}
+```{r, results='markup'}
 y <- tbl_reg$`Body Weight`;y
 ```
 
 * The regression coefficient is then computed as
 
-```{r}
+```{r, results='markup'}
 xtx <- crossprod(X)
 xtx_inv <- solve(xtx)
 xty <- crossprod(X,y)
@@ -63,7 +63,7 @@ cat(" * Slope: ", b_ls[2], "\n")
 
 $$\hat{\sigma^2} =  {1 \over n-p} \sum_{n=1}^n r_i^2$$
 
-```{r}
+```{r, results='markup'}
 n <- length(y)
 p <- length(b_ls)
 r <- y - X %*% b_ls
@@ -75,7 +75,7 @@ cat(" * Error SD: ", sqrt(sigma2_ls), "\n")
 
 Verifying the results using `lm()`
 
-```{r}
+```{r, results='markup'}
 reg_bw_bc <- lm(`Body Weight` ~ `Breast Circumference`, data = tbl_reg)
 summary(reg_bw_bc)
 ```

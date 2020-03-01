@@ -1,6 +1,7 @@
 ---
 title: "Generate Multiple Linear Regression"
 output:
+  pdf_document: default
   html_document:
     df_print: paged
 date: '2020-02-24'
@@ -43,8 +44,12 @@ nobs <- nrow(tbl_reg)
 l_bcs_par <- list(mean = 5, sd = 1.2)
 l_hei_par <- list(mean = 150, sd = 13.5)
 tbl_mult_reg <- tibble::add_column(tbl_reg, 
-                                   BCS = round(rnorm(n = nobs, mean = l_bcs_par$mean, sd = l_bcs_par$sd), digits = 1),
-                                   HEI = round(rnorm(n = nobs, mean = l_hei_par$mean, sd = l_hei_par$sd), digits = 0))
+                                   BCS = round(rnorm(n = nobs, 
+                                                     mean = l_bcs_par$mean, 
+                                                     sd = l_bcs_par$sd), digits = 1),
+                                   HEI = round(rnorm(n = nobs, 
+                                                     mean = l_hei_par$mean, 
+                                                     sd = l_hei_par$sd), digits = 0))
 knitr::kable(tbl_mult_reg,
              booktabs = TRUE,
              longtable = TRUE,

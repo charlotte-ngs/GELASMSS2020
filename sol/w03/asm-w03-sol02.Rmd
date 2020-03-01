@@ -20,9 +20,9 @@ During the lecture the regression model was explained using the dataset on body 
 ### # define constant paths
 s_data_root_online <- "https://charlotte-ngs.github.io/GELASMSS2020"
 s_data_root_local <- here::here() 
-s_data_dir <- "ex/w03/bw_bc_mult_reg.csv"
+s_data_dir <- "ex/w03/bw_mult_reg.csv"
 ### # define data path depending on whether we are online or not
-b_online <- FALSE
+b_online <- TRUE
 if (b_online){
   s_data_root <- s_data_root_online
 } else {
@@ -34,7 +34,7 @@ tbl_reg <- readr::read_csv(file = s_data_path)
 knitr::kable(tbl_reg,
              booktabs = TRUE,
              longtable = TRUE,
-             caption = "Dataset for Regression of Body Weight on Breast Circumference for ten Animals")
+             caption = "Dataset for Multiple Linear Regression of Body Weight on Breast Circumference and two Conformation Traits for ten Animals")
 ```
 
 The same dataset is also available from the website at `r paste(s_data_root_online, s_data_dir, sep = "/")`. 
@@ -63,7 +63,9 @@ The matrix $X$ and the vector $y$ are extracted from the dataframe and have the 
 
 ```{r}
 n_nr_ani <- nrow(tbl_reg)
-mat_x <- matrix(c(rep(1,n_nr_ani), tbl_reg$`Breast Circumference`), ncol = 2)
+mat_x <- matrix(c(rep(1,n_nr_ani), 
+                  tbl_reg$`Breast Circumference`, 
+                  tbl_reg$BCS, tbl_reg$HEI), ncol = (ncol(tbl_reg)-1))
 vec_y <- tbl_reg$`Body Weight`
 ```
 
@@ -89,7 +91,7 @@ n_hat_b
 We can verify this result using the `lm()` function of R
 
 ```{r}
-lm_bwbc <- lm(`Body Weight` ~ `Breast Circumference`, data = tbl_reg)
+lm_bwbc <- lm(`Body Weight` ~ `Breast Circumference` + BCS + HEI, data = tbl_reg)
 summary(lm_bwbc)
 ```
 
@@ -109,12 +111,12 @@ knitr::kable(tbl_new_ani,
              caption = "Breast Circumference Measurements For Two Animals Used To Predict Body Weight")
 ```
 
-We want to use the results of Problem 1 to computed the predicted values for `Body Weight` for the two animals. The observed value for `Breast Circumference` of "Calf 12" is outside of the range of the values used in Problem 1. Predicting values of response variables based on predictors that are outside of the range of values used for the parameter estimation is called __extrapolation__. Based on the result of the predicted value of the trait `Body Weight` for "Calf 12" what can be said about the process of extrapolation? 
+We want to use the results of the simple linear regression of body weight (BW) on breast circumference (BC), as shown in Problem 1 of Exercise 1 to computed the predicted values for `Body Weight` for the two animals. The observed value for `Breast Circumference` of "Calf 12" is outside of the range of the values used in Problem 1. Predicting values of response variables based on predictors that are outside of the range of values used for the parameter estimation is called __extrapolation__. Based on the result of the predicted value of the trait `Body Weight` for "Calf 12" what can be said about the process of extrapolation? 
 
 
 ### Your Tasks {-}
-* Compute the predicted value of `Body Weight` for "Animal 11" using the results from Problem 1
-* Compute the predicted value of `Body Weight` for "Calf 12" using the results from Problem 1
+* Compute the predicted value of `Body Weight` for "Animal 11" 
+* Compute the predicted value of `Body Weight` for "Calf 12"
 * Make a statement about the validity of the extrapolated value of `Body Weight` for "Calf 12"
 
 
