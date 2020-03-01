@@ -196,4 +196,95 @@ $$\hat{y} = x_{new} * \hat{b}$$
 - No predictions outside of the range of $x$ used to estimate $\hat{b}$
 
 
+## Multiple Linear Regression
+
+* Use more than one predictor variable
+* Example: Conformation traits `BCS` and `HEI` besides `BC`
+* New model:
+
+$$ y_i = b_0 + BC_i * b_1 + BCS_i * b_2 + HEI_i * b_3 + e_i$$
+
+* In matrix vector notation:
+
+$$y = X b + e$$
+
+with $b^T = \left[\begin{array}{cccc} b_0 & b_1 & b_2 & b_3 \end{array}\right]$
+
+## New data set
+
+```{r datamultlinregression, echo=FALSE, results='asis', message=FALSE}
+### # define constant paths
+s_data_root_online <- "https://charlotte-ngs.github.io/GELASMSS2020"
+s_data_root_local <- here::here() 
+s_data_dir <- "ex/w03/bw_mult_reg.csv"
+### # define data path depending on whether we are online or not
+b_online <- FALSE
+if (b_online){
+  s_data_root <- s_data_root_online
+} else {
+  s_data_root <- s_data_root_local
+}
+s_data_path <- file.path(s_data_root, s_data_dir)
+### # read data from s_data_path
+tbl_reg <- readr::read_csv(file = s_data_path)
+knitr::kable(tbl_reg,
+             booktabs = TRUE,
+             longtable = TRUE,
+             caption = "Dataset for Multiple Linear Regression")
+```
+
+
+## Goal
+
+* Find solution for $\hat{b}_{LS}$
+* Same principle of least squares as with simple linear regression
+* Different dimensions for $X$ and $b$
+
+$\rightarrow$ Problem 1 in Exercise 2
+
+
 ## Regression on Dummy Variables
+
+* What happens when predictor variables $X$ are no longer continuous
+* Examples: SNP-Genotypes
+* $X$ can only take a few discrete values, e.g., $0, 1$ or $-1, 0, 1$, ...
+
+$\rightarrow$ regression on dummy variables or just general fixed linear model.
+
+
+## Example: SNP-Data
+
+```{r snp-data-linkage, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg"}
+#rmdhelp::use_odg_graphic(ps_path = "odg/snp-data-linkage.odg")
+knitr::include_graphics(path = "odg/snp-data-linkage.png")
+```
+ 
+
+## Goal
+
+* Same as in linear regression: fit line through points such that least squares criterion holds
+* Interpretation: Difference between effect levels
+* For SNP-data: differences correspond to marker effects
+
+
+## Dummy Regression Line
+
+```{r snp-data-dummy-reg-line, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg"}
+#rmdhelp::use_odg_graphic(ps_path = "odg/snp-data-dummy-reg-line.odg")
+knitr::include_graphics(path = "odg/snp-data-dummy-reg-line.png")
+```
+
+ 
+## Problem
+
+* In many datasets $X$ does not have full column-rank
+* That means some columns of $X$ show linear dependence
+* As a consequence of that $(X^TX)$ cannot be inverted
+
+
+## Solution
+
+* Use a generalised inverse $(X^TX)^-$ to get a solution $\hat{b}_{LS}$ for least squares normal equations
+* Use estimable functions of $\hat{b}_{LS}$ which are independent of the choice of $(X^TX)^-$
+* One example for estimable functions are differences between effect levels
+* For example of SNP-data these correspond to marker effects.
