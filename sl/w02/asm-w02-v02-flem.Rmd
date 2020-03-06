@@ -173,7 +173,7 @@ $$\hat{b}_{LS} = (X^TX)^{-1}X^Ty$$
 - Least Squares Procedure does not yield an estimate for $\sigma^2$
 - The estimator based on the residuals 
 
-$$\hat{\sigma^2} =  {1 \over n-p} \sum_{n=1}^n r_i^2$$
+$$\hat{\sigma^2} =  {1 \over n-p} \sum_{i=1}^n r_i^2$$
 
 
 ## Different Types of Regressions
@@ -181,6 +181,7 @@ $$\hat{\sigma^2} =  {1 \over n-p} \sum_{n=1}^n r_i^2$$
 - Regression through the origin
 
 $$y_i = x_i * b + e_i$$
+
 - Regression with intercept
 
 $$y_i = b_0 + x_i * b + e_i$$
@@ -288,3 +289,24 @@ knitr::include_graphics(path = "odg/snp-data-dummy-reg-line.png")
 * Use estimable functions of $\hat{b}_{LS}$ which are independent of the choice of $(X^TX)^-$
 * One example for estimable functions are differences between effect levels
 * For example of SNP-data these correspond to marker effects.
+
+
+## Generalised Inverse
+
+* Reminder: the (ordinary) inverse $A^{-1}$ of $A$ is given by $A^{-1}A = I$, but $A^{-1}$ exists only, if $A$ is of full rank.
+* A generalised inverse $G$ of matrix $A$ satisfies: $AGA = A$
+* For the system of equations $Ax = y$, the vector $x = Gy$ is a solution, if $AGA = A$
+* For a generalised inverse $G$ of $A$, the system of equation $Ax = y$ has solutions
+
+$$\tilde{x} = Gy + (GA - I)z$$
+for an arbitrary vector $z$.
+
+
+## Estimable Functions
+
+* linear function of the parameter ($b$) that is identical to linear function of expected values of observations $y$, i.e., 
+
+$$q^Tb = t^TE(y)$$
+
+* estimable functions are invariant (do not change) with different generalised inverses.
+

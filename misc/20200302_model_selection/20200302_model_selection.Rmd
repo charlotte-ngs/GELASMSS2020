@@ -1,0 +1,53 @@
+---
+title: "Model Selection in Multiple Linear Regression"
+output:
+  html_document:
+    df_print: paged
+---
+
+
+# Disclaimer
+Design of exercise problem for model selection.
+
+
+# Task 
+Given the data on multiple linear regression.
+
+```{r dataregression, echo=FALSE, results='asis', message=FALSE}
+### # define constant paths
+require(dplyr)
+s_data_root_online <- "https://charlotte-ngs.github.io/GELASMSS2020"
+s_data_root_local <- here::here() 
+s_data_dir <- "ex/w03/bw_mult_reg.csv"
+### # define data path depending on whether we are online or not
+b_online <- FALSE
+if (b_online){
+  s_data_root <- s_data_root_online
+} else {
+  s_data_root <- s_data_root_local
+}
+s_data_path <- file.path(s_data_root, s_data_dir)
+### # read data from s_data_path
+tbl_reg <- readr::read_csv(file = s_data_path)
+tbl_reg <- tbl_reg %>% rename(BodyWeight = `Body Weight`, BreastCircumference = `Breast Circumference`)
+knitr::kable(tbl_reg,
+             booktabs = TRUE,
+             longtable = TRUE,
+             caption = "Dataset for Multiple Linear Regression of Body Weight on Breast Circumference and two Conformation Traits for ten Animals")
+```
+
+
+# Model Selection
+Select the best model from the data above using `olsrr::ols_step_both_p()`
+
+```{r, eval=FALSE}
+model_multreg_bw <- lm(BodyWeight ~ BreastCircumference + BCS + HEI, data = tbl_reg)
+olsrr::ols_step_all_possible(model_multreg_bw)
+```
+
+Using stepwise AIC
+
+```{r}
+olsrr::ols_step_backward_aic(model_multreg_bw)
+```
+
