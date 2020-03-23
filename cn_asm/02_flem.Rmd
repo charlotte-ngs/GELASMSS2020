@@ -154,7 +154,7 @@ The incidence matrix $X$ in \@ref(eq:flemmatrixvector) can be composed from the 
 \end{equation}
 
 
-## Parameter Estimation Using Least Squares {#asm-flem-parameter-estimation}
+## Parameter Estimation Using Least Squares {#asm-flem-parameter-estimation-least-squares}
 The method of parameter estimation is explained using the simpler case of a regression model. That means both the predictors and the response variables are on a continuous scale. As a further simplification, we assume that there is only one predictor variable and one response variable. The predictor variable is called $x$ and the response variable is called $y$. The model is still the same as shown in \@ref(eq:flemmatrixvector). The matrix $X$ has just one column with the measured values of the predictor variable and $b$ is just a scalar unknown parameter. The vector $y$ contains the observed values for the response values. 
 
 The goal of the analysis of the simple dataset is to find an estimate of the scalar $b$ such that the linear combination of $X$ and $b$ best explains the values in $y$. How we can find such an estimation procedure that allows us to calculate an estimate of $b$ is explained using a small example data set in the following subsection.
@@ -475,8 +475,8 @@ cat("\\end{equation}")
 ```
 
 
-### Parameter Estimation In A Fixed Linear Effects Model {#asm-flem-parameter-estimation}
-The goal for model \@ref(eq:flemsnp) is to get an estimate for the unknown parameters $b_0$, $a_G$ and $a_H$. In section \@ref(asm-flem-parameter-estimation) we saw how unknown parameters can be estimated for a regression model using least squares. When applying the least squares method, we did not make any assumptions about the predictor variables. The minimization of the sum of the squared residuals can also be applied for the fixed linear effects model. This minimization leads to the same normal equations
+### Parameter Estimation In A Fixed Linear Effects Model {#asm-flem-parameter-estimation-in-flem}
+The goal for model \@ref(eq:flemsnp) is to get an estimate for the unknown parameters $b_0$, $a_G$ and $a_H$. In section \@ref(asm-flem-parameter-estimation-least-squares) we saw how unknown parameters can be estimated for a regression model using least squares. When applying the least squares method, we did not make any assumptions about the predictor variables. The minimization of the sum of the squared residuals can also be applied for the fixed linear effects model. This minimization leads to the same normal equations
 
 \begin{equation}
   X^TXb^{(0)} = X^Ty

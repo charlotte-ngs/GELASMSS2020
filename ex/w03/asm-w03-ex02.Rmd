@@ -60,7 +60,7 @@ knitr::kable(tbl_new_ani,
              caption = "Breast Circumference Measurements For Two Animals Used To Predict Body Weight")
 ```
 
-We want to use the results of the simple linear regression of body weight (BW) on breast circumference (BC), as shown in Problem 1 of Exercise 1 to computed the predicted values for `Body Weight` for the two animals. The observed value for `Breast Circumference` of "Calf 12" is outside of the range of the values used in Problem 1. Predicting values of response variables based on predictors that are outside of the range of values used for the parameter estimation is called __extrapolation__. Based on the result of the predicted value of the trait `Body Weight` for "Calf 12" what can be said about the process of extrapolation? 
+We want to use the results of the simple linear regression of body weight (BW) on breast circumference (BC), as shown in Problem 2 of Exercise 1 to computed the predicted values for `Body Weight` for the two animals. The observed value for `Breast Circumference` of "Calf 12" is outside of the range of the values used in Problem 1. Predicting values of response variables based on predictors that are outside of the range of values used for the parameter estimation is called __extrapolation__. Based on the result of the predicted value of the trait `Body Weight` for "Calf 12" what can be said about the process of extrapolation? 
 
 
 ### Your Tasks {-}
