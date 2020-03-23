@@ -227,6 +227,11 @@ s_misc_url <- paste0(sBaseUrl, "misc/")
 vec_topics_addmat <- vec_topics
 
 vec_topics_addmat[which(Datum == format(as.Date("2020/02/17"), "%d.%m"))] <- paste0("[Introduction To Linear Algebra](", s_cn_asm_url, "92_intro_linalg.pdf), [Basics of Quantitative Genetics](", s_cn_asm_url, "93_basics_qg.pdf)")  
+vec_topics_addmat[which(Datum == format(as.Date("2020/03/23"), "%d.%m"))] <- paste0("[Recording of Lecture 06](https://youtu.be/2d0YjIoUWPE)")  
+
+
+
+# https://youtu.be/2d0YjIoUWPE
 # dataframe and table with additional material
 df_addmat <- tibble::tibble(Week = Woche, Date = Datum, Topic = vec_topics_addmat)
 knitr::kable(df_addmat)
