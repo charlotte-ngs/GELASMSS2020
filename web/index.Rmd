@@ -153,7 +153,7 @@ vec_topics_slides[which(Datum == format(as.Date("2020/03/09"), "%d.%m"))] <- pas
 vec_topics_slides[which(Datum == format(as.Date("2018/03/16"), "%d.%m"))] <- paste0("[LASSO](", s_sl_url, "w05/asm-w05-v05-lasso.pdf)") 
 vec_topics_slides[which(Datum == format(as.Date("2018/03/23"), "%d.%m"))] <- paste0("[Bayes](", s_sl_url, "w06/asm-w06-v06-bayes.pdf)") 
 
-vec_topics_slides[which(Datum == format(as.Date("2020/03/30"), "%d.%m"))] <- paste0("[](", s_sl_url, "", ")") 
+vec_topics_slides[which(Datum == format(as.Date("2020/03/30"), "%d.%m"))] <- paste0("[Introduction](", s_sl_url, "w07/gel-w07-v01-intro.pdf)") 
 vec_topics_slides[which(Datum == format(as.Date("2020/04/06"), "%d.%m"))] <- paste0("[](", s_sl_url, "", ")") 
 # vec_topics_slides[which(Datum == format(as.Date("2020/04/13"), "%d.%m"))] <- paste0("[](", s_sl_url, "", ")") 
 vec_topics_slides[which(Datum == format(as.Date("2020/04/27"), "%d.%m"))] <- paste0("[](", s_sl_url, "", ")") 
