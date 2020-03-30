@@ -2,7 +2,10 @@
 title: "Applied Genetic Evaluation Of Livestock"
 author: "Peter von Rohr"
 date: "30.03.2020"
-output: beamer_presentation
+output:   
+  beamer_presentation:   
+     includes:  
+        in_header: header_notes.tex  
 ---
 
 ```{r setup, include=FALSE}
@@ -10,7 +13,16 @@ knitr::opts_chunk$set(echo = FALSE)
 knitr::knit_hooks$set(hook_convert_odg = rmdhelp::hook_convert_odg)
 ```
 
+\note{
 
+\noindent\textbf{Note}:
+
+Welcome to the lecture "Applied Genetic Evaluation of Livestock".
+
+During this lecture which starts today and lasts until the end of the semester, we look into the broader context of Applied Genetic Evaluation of Livestock and into some selected topics of Genetic Evaluations.
+
+As we will see in a minute, applied genetic evaluation is a very special aspect in the broader context of breeding programs and breeding organisation.
+}
 
 ## Program
 
@@ -48,7 +60,18 @@ df_schedule <- data.frame(Week = Woche, Date = Datum, Topic = vec_topics_schedul
 knitr::kable(df_schedule)
 ```
 
+\note{
 
+\noindent\textbf{Note}:
+
+This table shows the tentative schedule. The sequence of topics is determined by the process that is run when a new trait is to be included into a breeding program. Examples of traits for which we did this described procedure are 
+
+\begin{itemize}
+\item calf survival (introduced in April 2020)
+\item twin and multiple birth (no decision about introduction, master thesis of Sarah Widmer)
+\end{itemize}
+
+}
 
 ## Course Objectives
 
@@ -61,6 +84,15 @@ $\rightarrow$ What is the meaning of a predicted breeding value of $-900$ kg for
 
 $\rightarrow$ What is the difference between production and breeding
 
+\note{
+
+\noindent\textbf{Note}:
+
+The goal of this course is to understand how the tools of livestock breeding work and what they are useful for and what they cannot do. 
+
+It is important to understand the difference between breeding and production.
+
+}
 
 ## Further Reading
 * Willam und Simianer: Tierzucht - Grundwissen Bachelor (Ulmer, UTB 3526 2011). This book gives an introduction into evolution, livestock production and breeding programs.
