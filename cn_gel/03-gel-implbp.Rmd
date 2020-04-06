@@ -7,21 +7,45 @@ met$set_this_rmd_file(ps_this_rmd_file = ifelse(rstudioapi::isAvailable(),
 
 
 ## Introduction {#gel-implbp-intro}
-In chapter \@ref(gel-bprog) in general and specifically in Figure \@ref(fig:bprogdiag) the different types of breeding programs and the components of a breeding program are shown and described. This chapter aims at giving an outline of how to implement a specific breeding program for a given population. We assume a beef breeding organisation that approaches us and we have to consult them on how to implement a breeding program. The breeding organisation wants to improve their breeding animals with respect to the economic profitability of the animal production. Together with the breeding organisation, we agree on a scientifically formulated breeding goal. 
+In chapter \@ref(gel-bprog) (see Figure \@ref(fig:bprogdiag)) the different types of breeding programs and the components of a breeding program are shown and described. This chapter aims at giving an outline of how to implement a specific breeding program for a given population. We assume a beef breeding organisation that approaches us and we have to consult them on how to implement a breeding program. The breeding organisation wants to improve their breeding animals with respect to the economic profitability of the animals sold at the production level. This implies that we want to use a hierarchical structure for the breeding program (see Figure \@ref(fig:gel-implbp-hier-bp)). 
+
+In previous years the beef breeding organisation has included several production and reproduction traits. The traits have been combined into a selection index. The weighting factors of the different traits in the selection index have been determined by the desired gain approach. As shown in section \@ref(gel-implbp-desired-gains) index weights determined by desired gains do not reflect the economic context of a production system. But the more recent developments in the agricultural sector with decreasing market prices puts a lot of pressure on the economic efficiency of the production animal goods. Hence, the beef breeding organisation wants to have a better consideration of the economic context of beef production in their breeding goal. As a consequence of that, the breeding organisation agreed on changing the currently used breeding goal to a scientifically formulated breeding goal. In what follows, we briefly describe the desired gain approach and then develop the breeding goal that is based on the economic context of the animal production system.
+
+```{r gel-implbp-hier-bp, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", fig.pos='H', fig.cap="Hierarchical Structure of a Breeding Program"}
+#rmdhelp::use_odg_graphic(ps_path = "odg/gel-implbp-hier-bp.odg")
+knitr::include_graphics(path = "odg/gel-implbp-hier-bp.png")
+```
+
+
+## Desired Gains {#gel-implbp-desired-gains}
+The desired gains approach is described e.g. in `r met$add('Brascamp1984')` and in `r met$add('Gibson1990')`. There is a fundamental difference between economic selection indices and restricted or desired gains indices. The term **restricted** selection index refers to the situation where the genetic change of one or several traits are set to $0$ whereas in a desired gains index, the genetic change of certain traits is pre-specified. It is also possible to have a mixture of restricted selection indices, desired gains indices and economic indices.
+
+With economic selection indices, the response to selection is entirely determined by the economic weights (also known as economic values) of the traits contributing to the economic merit of the production animals, the phenotypic variance-covariance matrix among the traits in the index, and the genetic covariance between the traits in the index and the traits of economic interest. It has to be noted here, that all traits of economic interest are included in the aggregate genotype ($H$).
+
+With restricted and desired gains indices, there are predetermined constraints on genetic response of some traits that partially or completely override the response determined by their economic weights. In the case of restricted indexes, economic weights of restricted traits are not defined. Justification for the use of restricted or desired gains
+indices has been either that some traits are considered already to be at an economic optimum or that economic weights are difficult or impossible to determine. However, in the former case economic weights at the optimum are by definition zero. It would then be appropriate to use an economic weight of zero or, if there is marked nonlinearity in the economic weights, to use a nonlinear selection index. 
+
+Assuming that a given trait is already at its economic optimum, its economic weight would be set to zero. After a given time corresponding to the planning horizon of the breeding program, it must be verified that the trait is still at its economic optimum. It could very well be the case that via correlated selection responses, the trait changes, even if the economic weight of the trait itself is set to zero. In case where the trait is no longer at its economic optimum it would receive automatically an economic weight different from zero such that the trait mean moves back towards its economic optimum. Such an iterative strategy can be used for traits with a certain economic optimum. Examples of such traits are fatness in beef or in pigs. 
+
+Hence the previous paragraph shows that it is not really necessary to use the tool of restricted indices or desired gains indices. The use of economic selection indices is fully sufficient even for traits with an intermediate economic optimum.
 
 
 ## Development Of The Breeding Goal {#gel-implbp-devbg}
-According to `r met$add("Phocas1998")`, three points are to be considered when developing a breeding goal. 
+In this section, we focus on the development and the design of a breeding goal that focuses on the economic merit of the production of marketable animal goods. According to `r met$add("Phocas1998")`, three points are to be considered when developing such a breeding goal. 
 
 1. description of production system
 2. modelling the profit for a typical herd
 3. derivation of economic values
 
-For reasons of simplicity we are assuming that all herds have the same production system. It is important to note here that in a hierarchical breeding program such as shown in Figure \@ref(fig:hierarchicalbreedingprogram), the herd described in subsection \@ref(gel-implbp-descprodsys) comes from the production sector situated at the bottom of the triangle. The reason for using a herd from the production tier as the basis of the description of the production is that the breeding and possibly the multiplier sections of the breeding program have to adapt their breeding animals to the needs and requirements of the production herds. Looking at the different participants of the breeding program as a client-supplier relationship, the producers are clients of the breeding and the multiplier farms for young production animals. These animals must meet the requirements of the production farms. As a consequence of that the breeding and multiplier farms have to raise young animals that fit the needs of the production farms. This is done by designing the breeding program implemented in the breeding farms according to the needs of the production farms. The implementation of the breeding program must yield tools for the breeding farms to be able to select the best animals as parents. One possibility of such an implementation is shown here for an idealized and simplified situation.
+For reasons of simplicity we are assuming that all herds have the same production system. It is important to note here that in a hierarchical breeding program such as shown in Figure \@ref(fig:gel-implbp-hier-bp), the herd described in subsection \@ref(gel-implbp-descprodsys) comes from the production sector situated at the bottom of the triangle. The reason for using a herd from the production tier as the basis of the description of the production is that the breeding and possibly the multiplier sections of the breeding program have to adapt their breeding animals to the needs and requirements of the production herds. Looking at the different participants of the breeding program as a client-supplier relationship, the producers are clients of the breeding and the multiplier farms for young production animals. These animals must meet the requirements of the production farms. As a consequence of that the breeding and multiplier farms have to raise young animals that fit the needs of the production farms. This is done by designing the breeding program implemented in the breeding farms according to the needs of the production farms. The implementation of the breeding program must yield tools for the breeding farms to be able to select the best animals as parents. One possibility of such an implementation is shown here for an idealized and simplified situation.
 
 
 ### Description Of Production System {#gel-implbp-descprodsys}
-A production system is defined by its required inputs and by the products that are sold. Furthermore housing, feeding regimes and other management components that affect the production costs are important properties of a production system. Figure \@ref(fig:gel-implbp-prodsys) illustrates a production system by showing the most important components affecting the profitability of a typical herd.
+A production system is defined by its required inputs consisting of feed, housing, labor and other fixed costs and by the products (output) that are sold. Furthermore housing systems, feeding regimes and other management components that affect the production costs are important properties of a production system. On the output-side it is important to know what type of markets the animal products can be sold to. 
+
+Overall the production system helps us to identify which traits of the animals have an economic impact. Those traits with an economic importance for the production system have to be included in the aggregate genotype.
+
+Figure \@ref(fig:gel-implbp-prodsys) illustrates a production system by showing the most important components affecting the profitability of a typical herd.
 
 ```{r gel-implbp-prodsys, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", fig.cap="Production system illustrated by a typical herd"}
 #rmddochelper::use_odg_graphic(ps_path = "odg/gel-implbp-prodsys.odg")
@@ -89,4 +113,4 @@ In the chapters that follow, we are having a closer look at how to do the model 
 
 
 
- 
+  

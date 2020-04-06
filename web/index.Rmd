@@ -128,7 +128,7 @@ vec_topics_notes[which(Datum == format(as.Date("2020/03/16"), "%d.%m"))] <- past
 vec_topics_notes[which(Datum == format(as.Date("2020/03/23"), "%d.%m"))] <- paste0("[Bayes](", s_cn_asm_url, "05_bayes.pdf)") 
 
 vec_topics_notes[which(Datum == format(as.Date("2020/03/30"), "%d.%m"))] <- paste0("[Introduction](", s_cn_gel_url, "01_intro.pdf)") 
-vec_topics_notes[which(Datum == format(as.Date("2020/04/06"), "%d.%m"))] <- paste0("[](", s_cn_gel_url, ")") 
+vec_topics_notes[which(Datum == format(as.Date("2020/04/06"), "%d.%m"))] <- paste0("[Implementation of a Breeding Program](", s_cn_gel_url, "03_impl_bp.pdf)") 
 # vec_topics_notes[which(Datum == format(as.Date("2020/04/13"), "%d.%m"))] <- paste0("[](", s_cn_gel_url, ")") 
 vec_topics_notes[which(Datum == format(as.Date("2020/04/20"), "%d.%m"))] <- paste0("[](", s_cn_gel_url, ")") 
 vec_topics_notes[which(Datum == format(as.Date("2020/05/04"), "%d.%m"))] <- paste0("[](", s_cn_gel_url, ")") 
@@ -154,7 +154,7 @@ vec_topics_slides[which(Datum == format(as.Date("2018/03/16"), "%d.%m"))] <- pas
 vec_topics_slides[which(Datum == format(as.Date("2018/03/23"), "%d.%m"))] <- paste0("[Bayes](", s_sl_url, "w06/asm-w06-v06-bayes.pdf)") 
 
 vec_topics_slides[which(Datum == format(as.Date("2020/03/30"), "%d.%m"))] <- paste0("[Introduction](", s_sl_url, "w07/gel-w07-v01-intro.pdf)") 
-vec_topics_slides[which(Datum == format(as.Date("2020/04/06"), "%d.%m"))] <- paste0("[](", s_sl_url, "", ")") 
+vec_topics_slides[which(Datum == format(as.Date("2020/04/06"), "%d.%m"))] <- paste0("[Implementation of Breeding Program](", s_sl_url, "w08/gel-w09-v02-bp.pdf)") 
 # vec_topics_slides[which(Datum == format(as.Date("2020/04/13"), "%d.%m"))] <- paste0("[](", s_sl_url, "", ")") 
 vec_topics_slides[which(Datum == format(as.Date("2020/04/27"), "%d.%m"))] <- paste0("[](", s_sl_url, "", ")") 
 vec_topics_slides[which(Datum == format(as.Date("2020/05/04"), "%d.%m"))] <- paste0("[](", s_sl_url, "", ")") 
@@ -228,6 +228,8 @@ vec_topics_addmat[which(Datum == format(as.Date("2020/02/17"), "%d.%m"))] <- pas
 vec_topics_addmat[which(Datum == format(as.Date("2020/03/23"), "%d.%m"))] <- "[Recording of Lecture 06](https://youtu.be/2d0YjIoUWPE)"  
 
 vec_topics_addmat[which(Datum == format(as.Date("2020/03/30"), "%d.%m"))] <- "[Recording of Lecture 07](https://youtu.be/Hlph5chez9Y)"
+
+vec_topics_addmat[which(Datum == format(as.Date("2020/04/06"), "%d.%m"))] <- "[Recording of Lecture 08](https://youtu.be/liwrWnGHKSs)"
 
 # https://youtu.be/2d0YjIoUWPE
 # dataframe and table with additional material
