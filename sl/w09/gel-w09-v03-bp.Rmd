@@ -11,8 +11,61 @@ knitr::knit_hooks$set(hook_convert_odg = rmdhelp::hook_convert_odg)
 ```
 
 
+## Why Statistical Modelling?
 
-## Why
+Some people believe, they do not need statistics. For them it is enough to look at a diagram
+
+```{r no-stat-model-diagram, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.height="7cm"}
+#rmdhelp::use_odg_graphic("odg/no-stat-model-diagram.odg")
+knitr::include_graphics(path = "odg/no-stat-model-diagram.png")
+```
+
+
+## Statistical Modelling Because ...
+Two types of dependencies between physical quantities
+
+1. deterministic
+2. stochastic
+
+
+## Deterministic Versus Stochastic
+
+```{r deter-vs-stoch, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg"}
+#rmdhelp::use_odg_graphic(ps_path = "odg/deter-vs-stoch.odg")
+knitr::include_graphics(path = "odg/deter-vs-stoch.png")
+```
+
+## Statistical Model
+
+* stochastic systems contains many sources of uncertainty
+* statistical models can handle uncertainty
+* components of a statistical model
+    + response variable $y$
+    + predictor variables $x_1, x_2, \ldots, x_k$
+    + error term $e$
+    + function $m(x)$ 
+
+
+## How Does A Statistical Model Work?
+
+* predictor variables $x_1, x_2, \ldots, x_k$ are transformed by function $m(x)$ to explain the response variable $y$
+* uncertainty is captured by error term.
+* as a formula, for observation $i$
+
+$$y_i = m(x_i) + e_i$$
+
+
+## Which function $m(x)$?
+
+* class of functions that can be used as $m(x)$ is infinitely large
+* restrict to linear functions of predictor variables
+
+
+## Which predictor variables?
+
+* Question, about which predictor variables to use is answered by model selection
+
+## Why Model Selection
 
 * Many predictor variables are available
 * Are all of them `relevant`?
@@ -160,4 +213,4 @@ $\rightarrow$ results in sequence $\mathcal{M}_0 \supseteq \mathcal{M}_1 \supset
 * AIC or BIC, requires distributional assumptions. 
 * AIC is implemented in `MASS::stepAIC()` 
 * Adjusted $R^2$ is a measure of goodness of fit, but sometimes is not conclusive when comparing two models
-* Try in exercise
+* Try in exercise 
