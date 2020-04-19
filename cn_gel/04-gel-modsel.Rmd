@@ -15,9 +15,9 @@ The difference between the two types of dependencies is shown in Diagram \@ref(f
 
 
 ### Deterministic Dependencies {#gel-modsel-deter-dep}
-An example for a **deterministic** dependency is Newton's law of gravity in physics. If a certain object, e.g. an apple is falling from a certain height $h$ to the ground, then the law of gravity tells us exactly how long it takes until the apple hits the ground. In principle this is only true, if we ignore any influences coming from air resistence or any wind effects. But if we wanted to we can include these effects also and we would obtain the exact time $t$ after which the apple lands on the ground. Except for measuring error there would be no source of uncertainty that would affect our resulting time $t$. 
+An example for a **deterministic** dependency is Newton's law of gravity in physics. If a certain object, e.g. an apple is falling from a certain height $h$ to the ground, then the law of gravity tells us exactly how long it takes until the apple hits the ground. In principle this is only true, if we ignore any influences coming from air resistance or any wind effects. But if we wanted to we can include these effects also and we would obtain the exact time $t$ after which the apple lands on the ground. Except for measuring error there would be no source of uncertainty that would affect our resulting time $t$. 
 
-Other examples of deterministic dependecies are the motion of the planets around the sun or some thermodynamic processes. 
+Other examples of deterministic dependencies are the motion of the planets around the sun or some thermodynamic processes. 
 
 
 ```{r deter-vs-stoch, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg"}
@@ -41,14 +41,14 @@ A statistical model is an object that consists of four parts
 3. error term $e$
 4. function $m(x)$ 
 
-In practise a statistical model must be viewed in a context of a given dataset. This dataset consists of a set of records. In an ideal situation every record contains one observation of the response variable and of one observation of all the predictor variables. In the statistical model, the response variable $y$ is expressed as a function ($m(x)$) of the predictor variables plus the error term $e$. For a given observation $y_i$, this can be expressed with the following formula
+In practice a statistical model must be viewed in a context of a given dataset. This dataset consists of a set of records. In an ideal situation every record contains one observation of the response variable and of one observation of all the predictor variables. In the statistical model, the response variable $y$ is expressed as a function ($m(x)$) of the predictor variables plus the error term $e$. For a given observation $y_i$, this can be expressed with the following formula
 
 \begin{equation}
 y_i = m(x_i) + e_i
 (\#eq:gel-modsel-statmodel)
 \end{equation}
 
-where $x_i$ stands for the vector of the predictor variables $x_{i,1}, x_{i,2}, \ldots, x_{i,k}$ belonging to observation $i$. The class of availabel functions $m(x)$ 
+where $x_i$ stands for the vector of the predictor variables $x_{i,1}, x_{i,2}, \ldots, x_{i,k}$ belonging to observation $i$. The class of available functions $m(x)$ 
 that could be used in a statistical model is infinitely large. Experiences has shown that restricting the possible functions $m(x)$ to linear functions is not too restrictive for most datasets and it does yield very valuable results. Hence in what follows, we are just using linear functions for our statistical model. 
 
 Besides the choice of the class of functions $m(x)$ that will be used, there is also the question whether all predictor variables $x_1, x_2, \ldots, x_k$ are really required to explain the response variable $y$. This question is answered by a technique that is called model selection which will be explained in the following sections.
