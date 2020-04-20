@@ -1,8 +1,8 @@
 #!/bin/bash
 
 SCRIPTDIR=/home/quagadmin/source/misctools/github
-# DIRTOFETCH=ex/w07
-DIRTOFETCH=sol/w07
+DIRTOFETCH=ex/w09
+# DIRTOFETCH=sol/w07
 
 #' fetch individual directory
 #' change to progdir
