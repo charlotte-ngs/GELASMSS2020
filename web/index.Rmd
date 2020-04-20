@@ -233,7 +233,8 @@ vec_topics_addmat[which(Datum == format(as.Date("2020/03/30"), "%d.%m"))] <- "[R
 
 vec_topics_addmat[which(Datum == format(as.Date("2020/04/06"), "%d.%m"))] <- "[Recording of Lecture 08](https://youtu.be/liwrWnGHKSs)"
 
-# https://youtu.be/2d0YjIoUWPE
+vec_topics_addmat[which(Datum == format(as.Date("2020/04/20"), "%d.%m"))] <- "[Recording of Lecture 09](https://youtu.be/U6MZeO9tSj0)"
+
 # dataframe and table with additional material
 df_addmat <- tibble::tibble(Week = Woche, Date = Datum, Topic = vec_topics_addmat)
 knitr::kable(df_addmat)
