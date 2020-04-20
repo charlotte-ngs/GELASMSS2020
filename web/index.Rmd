@@ -156,6 +156,7 @@ vec_topics_slides[which(Datum == format(as.Date("2018/03/23"), "%d.%m"))] <- pas
 vec_topics_slides[which(Datum == format(as.Date("2020/03/30"), "%d.%m"))] <- paste0("[Introduction](", s_sl_url, "w07/gel-w07-v01-intro.pdf)") 
 vec_topics_slides[which(Datum == format(as.Date("2020/04/06"), "%d.%m"))] <- paste0("[Implementation of Breeding Program](", s_sl_url, "w08/gel-w09-v02-bp.pdf)") 
 # vec_topics_slides[which(Datum == format(as.Date("2020/04/13"), "%d.%m"))] <- paste0("[](", s_sl_url, "", ")") 
+vec_topics_slides[which(Datum == format(as.Date("2020/04/20"), "%d.%m"))] <- paste0("[Model Selection](", s_sl_url, "w09/gel-w09-v03-bp.pdf)")
 vec_topics_slides[which(Datum == format(as.Date("2020/04/27"), "%d.%m"))] <- paste0("[](", s_sl_url, "", ")") 
 vec_topics_slides[which(Datum == format(as.Date("2020/05/04"), "%d.%m"))] <- paste0("[](", s_sl_url, "", ")") 
 vec_topics_slides[which(Datum == format(as.Date("2020/05/11"), "%d.%m"))] <- paste0("[](", s_sl_url, "", ")") 
