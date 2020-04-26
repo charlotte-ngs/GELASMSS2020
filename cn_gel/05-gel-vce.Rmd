@@ -202,7 +202,7 @@ L(\theta) = (2\pi)^{-1/2 n} \sigma^{-n}|H|^{-1/2} * exp\left\{-\frac{1}{2\sigma^
 (\#eq:gelvcelikemvn)
 \end{equation}
 
-where $var(y) = H\sigma^2 = Z^TGZ + R$ with $var(u) = I \sigma_u^2$ and $var(e) = R = I\sigma^2$. The maximum likelihoods for $\sigma_u^2$ and $\sigma^2$ are the values that maximize the function likelihood function $L$. It has to be noted that in \@ref(eq:gelvcelikemvn) not only the variance components, bu also the fixed effects $b$ are unknown. These must also be estimated from the data. 
+where $var(y) = H\sigma^2 = Z^TGZ + R$ with $var(u) = I \sigma_u^2$ and $var(e) = R = I\sigma^2$. The maximum likelihoods for $\sigma_u^2$ and $\sigma^2$ are the values that maximize the function likelihood function $L$. It has to be noted that in \@ref(eq:gelvcelikemvn) not only the variance components, but also the fixed effects $b$ are unknown. These must also be estimated from the data. 
 
 The maximization of $L$ is done by taking the partial derivatives of $\lambda = log L$ with respect to all unknown parameters. Then these partial derivatives are set to $0$ and the resulting solutions are taken as maximum likelihood estimates. 
 
@@ -256,7 +256,7 @@ $$u | G, \sigma_u^2 \sim N(0, G*\sigma_u^2)$$
 
 where $\sigma_u^2$ is the variance of the prior distribution of $u$ and $G$ is a known matrix. In the case of livestock breeding, $G$ is the additive numerator relationship matrix. 
 
-The priors of the variance componetnes $\sigma_e^2$ and $\sigma_u^2$ were assumed to be independent scaled inverted chi-square ($\chi^2$) distributions such that 
+The priors of the variance components $\sigma_e^2$ and $\sigma_u^2$ were assumed to be independent scaled inverted chi-square ($\chi^2$) distributions such that 
 
 $$p(\sigma_e^2 | \nu_e, s_e^2) \propto (\sigma_e^2)^{-\nu_e/2-1} exp(-{1\over 2}\nu_e s_e^2 / \sigma_e^2)$$
 and
@@ -320,7 +320,7 @@ $$\tilde{s_u}^2 = \left[u^TG^{-1}u + \nu_u s_u^2 \right] / \tilde{\nu_u}$$
 The above specified fully conditional posterior densities are used to draw in turn for every unknown component a random number from the respective specified conditional posterior distribution. The sampled random numbers are stored for making inferences about the unknown components in the statistical model. One example inference consists of the Bayesian estimate of a given unknown. The Bayesian estimate is computed from the means of the random samples that were drawn using the Gibbs sampler.
 
 
-## Practical Consideration
+### Practical Consideration
 Because the availability of widely used and tested software implementing Bayesian procedures is limited, these procedures are not used in practical livestock breeding. 
 
 
