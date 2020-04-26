@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
@@ -1378,6 +1377,7 @@ summary {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -1406,6 +1406,12 @@ summary {
 }
 }
 
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
 
 .toc-content {
   padding-left: 30px;
@@ -1583,7 +1589,7 @@ More information on the excursion will be available from here. [here](https://ch
 <tr class="even">
 <td align="right">8</td>
 <td align="left">06.04</td>
-<td align="left">Suisag and The Swiss Pig Breeding Program</td>
+<td align="left">Model Selection</td>
 </tr>
 <tr class="odd">
 <td align="right">9</td>
@@ -1593,17 +1599,17 @@ More information on the excursion will be available from here. [here](https://ch
 <tr class="even">
 <td align="right">10</td>
 <td align="left">20.04</td>
-<td align="left">Model Selection</td>
+<td align="left">Variance Components</td>
 </tr>
 <tr class="odd">
 <td align="right">11</td>
 <td align="left">27.04</td>
-<td align="left">Genetic Groups</td>
+<td align="left">Genetic Groups and Longitudinal Data</td>
 </tr>
 <tr class="even">
 <td align="right">12</td>
 <td align="left">04.05</td>
-<td align="left">Longitudinal Data</td>
+<td align="left">Suisag and The Swiss Pig Breeding Program</td>
 </tr>
 <tr class="odd">
 <td align="right">13</td>
@@ -1660,22 +1666,22 @@ More information on the excursion will be available from here. [here](https://ch
 <tr class="odd">
 <td align="right">5</td>
 <td align="left">16.03</td>
-<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/cn_asm/"></a></td>
+<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/cn_asm/04_lasso.pdf">LASSO</a></td>
 </tr>
 <tr class="even">
 <td align="right">6</td>
 <td align="left">23.03</td>
-<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/cn_asm/"></a></td>
+<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/cn_asm/05_bayes.pdf">Bayes</a></td>
 </tr>
 <tr class="odd">
 <td align="right">7</td>
 <td align="left">30.03</td>
-<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/cn_gel/"></a></td>
+<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/cn_gel/01_intro.pdf">Introduction</a></td>
 </tr>
 <tr class="even">
 <td align="right">8</td>
 <td align="left">06.04</td>
-<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/cn_gel/"></a></td>
+<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/cn_gel/03_impl_bp.pdf">Implementation of a Breeding Program</a></td>
 </tr>
 <tr class="odd">
 <td align="right">9</td>
@@ -1685,7 +1691,7 @@ More information on the excursion will be available from here. [here](https://ch
 <tr class="even">
 <td align="right">10</td>
 <td align="left">20.04</td>
-<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/cn_gel/"></a></td>
+<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/cn_gel/04_model_sel.pdf">Model Selection</a></td>
 </tr>
 <tr class="odd">
 <td align="right">11</td>
@@ -1739,32 +1745,32 @@ More information on the excursion will be available from here. [here](https://ch
 <tr class="odd">
 <td align="right">3</td>
 <td align="left">02.03</td>
-<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/sl/"></a></td>
+<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/sl/w03/asm-w03-v03-gblup.pdf">GBLUP</a></td>
 </tr>
 <tr class="even">
 <td align="right">4</td>
 <td align="left">09.03</td>
-<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/sl/"></a></td>
+<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/sl/w04/asm-w04-v04-gblup.pdf">How GLBUP Works</a>, <a href="https://charlotte-ngs.github.io/GELASMSS2020/sl/w04/asm-w04-v04-grm.pdf">Genomic Relationship Matrix</a></td>
 </tr>
 <tr class="odd">
 <td align="right">5</td>
 <td align="left">16.03</td>
-<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/sl/"></a></td>
+<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/sl/w05/asm-w05-v05-lasso.pdf">LASSO</a></td>
 </tr>
 <tr class="even">
 <td align="right">6</td>
 <td align="left">23.03</td>
-<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/sl/"></a></td>
+<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/sl/w06/asm-w06-v06-bayes.pdf">Bayes</a></td>
 </tr>
 <tr class="odd">
 <td align="right">7</td>
 <td align="left">30.03</td>
-<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/sl/"></a></td>
+<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/sl/w07/gel-w07-v01-intro.pdf">Introduction</a></td>
 </tr>
 <tr class="even">
 <td align="right">8</td>
 <td align="left">06.04</td>
-<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/sl/"></a></td>
+<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/sl/w08/gel-w09-v02-bp.pdf">Implementation of Breeding Program</a></td>
 </tr>
 <tr class="odd">
 <td align="right">9</td>
@@ -1774,7 +1780,7 @@ More information on the excursion will be available from here. [here](https://ch
 <tr class="even">
 <td align="right">10</td>
 <td align="left">20.04</td>
-<td align="left"></td>
+<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/sl/w09/gel-w09-v03-bp.pdf">Model Selection</a></td>
 </tr>
 <tr class="odd">
 <td align="right">11</td>
@@ -1833,22 +1839,22 @@ More information on the excursion will be available from here. [here](https://ch
 <tr class="even">
 <td align="right">4</td>
 <td align="left">09.03</td>
-<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/ex/"></a></td>
+<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/ex/w04/asm-w04-ex03.pdf">Fixed Linear Effect Model</a></td>
 </tr>
 <tr class="odd">
 <td align="right">5</td>
 <td align="left">16.03</td>
-<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/ex/"></a></td>
+<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/ex/w05/asm-w05-ex04.pdf">GBLUP</a></td>
 </tr>
 <tr class="even">
 <td align="right">6</td>
 <td align="left">23.03</td>
-<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/ex/"></a></td>
+<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/ex/w06/asm-w06-ex05.pdf">AM-BLUP vs. GBLUP</a></td>
 </tr>
 <tr class="odd">
 <td align="right">7</td>
 <td align="left">30.03</td>
-<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/ex/"></a></td>
+<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/ex/w07/asm-w07-ex06.pdf">Bayesian Estimation</a></td>
 </tr>
 <tr class="even">
 <td align="right">8</td>
@@ -1863,7 +1869,7 @@ More information on the excursion will be available from here. [here](https://ch
 <tr class="even">
 <td align="right">10</td>
 <td align="left">20.04</td>
-<td align="left"></td>
+<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/ex/w09/gel-w09-ex01.pdf">Model Selection</a></td>
 </tr>
 <tr class="odd">
 <td align="right">11</td>
@@ -1912,32 +1918,32 @@ More information on the excursion will be available from here. [here](https://ch
 <tr class="even">
 <td align="right">2</td>
 <td align="left">24.02</td>
-<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/sol/"></a></td>
+<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/sol/w02/asm-w02-sol01.pdf">Linear Fixed Effects Models</a></td>
 </tr>
 <tr class="odd">
 <td align="right">3</td>
 <td align="left">02.03</td>
-<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/sol/"></a></td>
+<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/sol/w03/asm-w03-sol02.pdf">Multiple Regression and Prediction</a></td>
 </tr>
 <tr class="even">
 <td align="right">4</td>
 <td align="left">09.03</td>
-<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/sol/"></a></td>
+<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/sol/w04/asm-w04-sol03.pdf">Fixed Linear Effect Model</a></td>
 </tr>
 <tr class="odd">
 <td align="right">5</td>
 <td align="left">16.03</td>
-<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/sol/"></a></td>
+<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/sol/w05/asm-w05-sol04.pdf">GBLUP</a></td>
 </tr>
 <tr class="even">
 <td align="right">6</td>
 <td align="left">23.03</td>
-<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/sol/"></a></td>
+<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/sol/w06/asm-w06-sol05.pdf">AM-BLUP vs. GBLUP</a></td>
 </tr>
 <tr class="odd">
 <td align="right">7</td>
 <td align="left">30.03</td>
-<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/sol/"></a></td>
+<td align="left"><a href="https://charlotte-ngs.github.io/GELASMSS2020/sol/w07/asm-w07-sol06.pdf">Bayesian Estimation</a></td>
 </tr>
 <tr class="even">
 <td align="right">8</td>
@@ -2021,17 +2027,17 @@ More information on the excursion will be available from here. [here](https://ch
 <tr class="even">
 <td align="right">6</td>
 <td align="left">23.03</td>
-<td align="left"></td>
+<td align="left"><a href="https://youtu.be/2d0YjIoUWPE">Recording of Lecture 06</a></td>
 </tr>
 <tr class="odd">
 <td align="right">7</td>
 <td align="left">30.03</td>
-<td align="left"></td>
+<td align="left"><a href="https://youtu.be/Hlph5chez9Y">Recording of Lecture 07</a></td>
 </tr>
 <tr class="even">
 <td align="right">8</td>
 <td align="left">06.04</td>
-<td align="left"></td>
+<td align="left"><a href="https://youtu.be/liwrWnGHKSs">Recording of Lecture 08</a></td>
 </tr>
 <tr class="odd">
 <td align="right">9</td>
@@ -2041,7 +2047,7 @@ More information on the excursion will be available from here. [here](https://ch
 <tr class="even">
 <td align="right">10</td>
 <td align="left">20.04</td>
-<td align="left"></td>
+<td align="left"><a href="https://youtu.be/U6MZeO9tSj0">Recording of Lecture 09</a></td>
 </tr>
 <tr class="odd">
 <td align="right">11</td>
@@ -2071,7 +2077,7 @@ More information on the excursion will be available from here. [here](https://ch
 </tbody>
 </table>
 <hr />
-<p><em>Latest Changes: 2020-03-01 09:22:51 (peter)</em></p>
+<p><em>Latest Changes: 2020-04-20 11:09:17 (pvr)</em></p>
 </div>
 </div>
 
