@@ -1,0 +1,165 @@
+---
+title: "Model Selection in Multiple Linear Regression"
+output:
+  html_document:
+    df_print: paged
+---
+
+
+# Disclaimer
+Design of exercise problem for model selection.
+
+
+# Task 
+Given the data on multiple linear regression.
+
+```{r dataregression, echo=FALSE, results='asis', message=FALSE}
+### # define constant paths
+require(dplyr)
+s_data_root_online <- "https://charlotte-ngs.github.io/GELASMSS2020"
+s_data_root_local <- here::here() 
+s_data_dir <- "ex/w03/bw_mult_reg.csv"
+### # define data path depending on whether we are online or not
+b_online <- FALSE
+if (b_online){
+  s_data_root <- s_data_root_online
+} else {
+  s_data_root <- s_data_root_local
+}
+s_data_path <- file.path(s_data_root, s_data_dir)
+### # read data from s_data_path
+tbl_reg <- readr::read_csv(file = s_data_path)
+tbl_reg <- tbl_reg %>% rename(BodyWeight = `Body Weight`, BreastCircumference = `Breast Circumference`)
+knitr::kable(tbl_reg,
+             booktabs = TRUE,
+             longtable = TRUE,
+             caption = "Dataset for Multiple Linear Regression of Body Weight on Breast Circumference and two Conformation Traits for ten Animals")
+```
+
+
+# Fitting Model
+As the first step the multiple linear regression model is fit.
+
+```{r}
+model_multreg_bw <- lm(BodyWeight ~ BreastCircumference + BCS + HEI, data = tbl_reg)
+```
+
+# Model Selection
+Select the best model from the data above using `olsrr::ols_step_both_p()`
+
+```{r, eval=TRUE}
+olsrr::ols_step_all_possible(model_multreg_bw)
+```
+
+Using stepwise AIC
+
+```{r}
+olsrr::ols_step_backward_aic(model_multreg_bw)
+```
+
+Using `MASS::stepAIC`
+
+```{r}
+MASS::stepAIC(model_multreg_bw)
+```
+
+# Data Simulation
+Simluate more data to check whether model selection works better with more data.
+
+```{r}
+# number of observations
+nr_obs <- 250
+
+# true regression parameters
+b_true <- c(-1065, 8.67)
+sd_true <- 11.08
+
+# true values for BC
+l_bc_par <- list(mean = mean(tbl_reg$BreastCircumference),
+                 sd   = sd(tbl_reg$BreastCircumference))
+
+# observations
+set.seed(5434)
+vec_bc_sim <- rnorm(nr_obs, mean = l_bc_par$mean, sd = l_bc_par$sd)
+vec_error_sim <- rnorm(nr_obs, mean = 0, sd = sd_true)
+vec_bw_sim <- b_true[1] + b_true[2] * vec_bc_sim + vec_error_sim
+tbl_reg_sim <- tibble::tibble(Animal = c(1:nr_obs),
+                              BC     = round(vec_bc_sim, digits = 0),
+                              BW     = round(vec_bw_sim, digits = 0))
+```
+
+Put everything into a tibble and add the random predictors
+
+```{r}
+l_bcs_par <- list(mean = 5, sd = 1.2)
+l_hei_par <- list(mean = 150, sd = 3.15)
+tbl_mult_reg_sim <- tibble::add_column(tbl_reg_sim, 
+                                   BCS = round(rnorm(n = nr_obs, 
+                                                     mean = l_bcs_par$mean, 
+                                                     sd = l_bcs_par$sd), digits = 1),
+                                   HEI = round(rnorm(n = nr_obs, 
+                                                     mean = l_hei_par$mean, 
+                                                     sd = l_hei_par$sd), digits = 0))
+```
+
+Show a plot of the data
+
+```{r}
+require(ggplot2)
+ggplot(tbl_mult_reg_sim, aes(x=tbl_mult_reg_sim$BC, y=tbl_mult_reg_sim$BW)) + 
+  geom_point()
+```
+
+
+# Modelling
+The simple linear regression
+
+```{r}
+lm.simple_reg <- lm(BW ~ BC, data = tbl_mult_reg_sim)
+summary(lm.simple_reg)
+```
+
+Multiple linear regression
+
+```{r}
+lm.mult_reg <- lm(BW ~ BC + BCS + HEI, data = tbl_mult_reg_sim)
+summary(lm.mult_reg)
+```
+
+
+# Model Selection
+Use model selection to check the relevant factors
+
+```{r}
+olsrr::ols_step_all_possible(lm.mult_reg)
+```
+
+Using `MASS::stepAIC()`
+
+```{r}
+MASS::stepAIC(lm.mult_reg)
+```
+
+
+# Conclusions
+Doing several trials with the above shown model selection approaches that the true model used in the simulation can only be obtained with a dataset that has more than 200 observations. Hence for the exercise task, we use a dataset with `r nr_obs` observations.
+
+The data is simulated by drawing `r nr_obs` BC-values from a normal distribution having mean and standard deviations equal to the mean and standard deviation of the BC-values from the original dataset. Then the BW-values are generated using the intercept and the regression coefficient estimated from the simple linear regression based on the original dataset. The additional predictor variables are just normal random numbers with assumed values for mean and standard deviation.
+
+
+# Exercise Task
+The first step to generate the exercise task is to write out the data to a file.
+
+```{r}
+s_lin_reg_model_sel <- "lin_reg_model_sel.csv"
+readr::write_csv(tbl_mult_reg_sim, path = s_lin_reg_model_sel)
+```
+
+
+# Problem
+To decide which predictor variables are important in a multiple linear regression, a technique called **model selection** can be used. Model selection compares different model with respect to different quality criterion. In R, there are several packages that implement model selection for multiple linear regression models. We just want to mention two of them.
+
+1. `olsrr::ols_step_all_possible()` and 
+2. `MASS::stepAIC()`
+
+Both functions take a multiple linear regression object as input. From the given model, reduced models are created by omitting the predictor variables one-by-one. In the result of both functions, the evaluated models are shown together with certain quality criteria. The second function uses AIC as the only model evaluation criterion, the first function lists a large number of different model criteria. For most criteria smaller values are better. This is not the case when looking at $R^2$ or adjusted $R^2$. For these two criteria, higher values are better. The problem with $R^2$ and partially also for its adjusted version is that they tend to favor the models with more predictor variables. 
