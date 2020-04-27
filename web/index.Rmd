@@ -97,9 +97,9 @@ vec_topics_schedule[which(Datum == format(as.Date("2020/04/06"), "%d.%m"))] <- "
 # vec_topics_schedule[which(Datum == format(as.Date("2020/04/13"), "%d.%m"))] <- ""
 vec_topics_schedule[which(Datum == format(as.Date("2020/04/20"), "%d.%m"))] <- "Variance Components"
 vec_topics_schedule[which(Datum == format(as.Date("2020/04/27"), "%d.%m"))] <- "Genetic Groups and Longitudinal Data"
-vec_topics_schedule[which(Datum == format(as.Date("2020/05/04"), "%d.%m"))] <- "Suisag and The Swiss Pig Breeding Program"
-vec_topics_schedule[which(Datum == format(as.Date("2020/05/11"), "%d.%m"))] <- "Braunvieh Schweiz and Qualitas AG"
-vec_topics_schedule[which(Datum == format(as.Date("2020/05/18"), "%d.%m"))] <- "Questions and Test Exams"
+vec_topics_schedule[which(Datum == format(as.Date("2020/05/04"), "%d.%m"))] <- "Genomic Selection"
+vec_topics_schedule[which(Datum == format(as.Date("2020/05/11"), "%d.%m"))] <- "Braunvieh Schweiz and Qualitas AG, Questions and Test Exams"
+vec_topics_schedule[which(Datum == format(as.Date("2020/05/18"), "%d.%m"))] <- "Suisag and The Swiss Pig Breeding Program"
 vec_topics_schedule[which(Datum == format(as.Date("2020/05/25"), "%d.%m"))] <- "Final Exams"
 
 # define dataframe for schedule table
@@ -158,7 +158,7 @@ vec_topics_slides[which(Datum == format(as.Date("2020/03/30"), "%d.%m"))] <- pas
 vec_topics_slides[which(Datum == format(as.Date("2020/04/06"), "%d.%m"))] <- paste0("[Implementation of Breeding Program](", s_sl_url, "w08/gel-w09-v02-bp.pdf)") 
 # vec_topics_slides[which(Datum == format(as.Date("2020/04/13"), "%d.%m"))] <- paste0("[](", s_sl_url, "", ")") 
 vec_topics_slides[which(Datum == format(as.Date("2020/04/20"), "%d.%m"))] <- paste0("[Model Selection](", s_sl_url, "w09/gel-w09-v03-bp.pdf)")
-vec_topics_slides[which(Datum == format(as.Date("2020/04/27"), "%d.%m"))] <- paste0("[](", s_sl_url, "", ")") 
+vec_topics_slides[which(Datum == format(as.Date("2020/04/27"), "%d.%m"))] <- paste0("[Variance Components Estimation](", s_sl_url, "w10/gel-w10-v04-vce.pdf)") 
 vec_topics_slides[which(Datum == format(as.Date("2020/05/04"), "%d.%m"))] <- paste0("[](", s_sl_url, "", ")") 
 vec_topics_slides[which(Datum == format(as.Date("2020/05/11"), "%d.%m"))] <- paste0("[](", s_sl_url, "", ")") 
   
