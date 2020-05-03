@@ -1,0 +1,86 @@
+---
+title: "Prediction of Breeding Values"
+author: "Peter von Rohr"
+date: "04.05.2020"
+output: beamer_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::knit_hooks$set(hook_convert_odg = rmdhelp::hook_convert_odg)
+```
+
+
+
+## What are breeding values
+
+Definition: two times difference between offspring of a given parent from population mean
+
+```{r def-breeding-value, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg", out.width="8cm", fig.align='center'}
+#rmdhelp::use_odg_graphic(ps_path = "odg/def-breeding-value.odg")
+knitr::include_graphics(path = "odg/def-breeding-value.png")
+```
+
+
+## Practical Considerations
+
+* Definition of breeding value is based on biological fact that parent passes half of its alleles to offspring
+* In practice, definition cannot be used
+   + most parents do not have enough offspring
+   + breeding values are needed before animals have offspring
+   + different environmental factors not considered
+   
+   
+## Solution
+
+* Use genetic model to predict breeding values based on phenotypic observations
+* Genetic model decomposes phenotypic observation ($y_i$) in different components
+
+$$y_i= \mu + u_i + d_i + i_i + e_i$$
+where $\mu$ is the general mean, $u_i$ the breeding value, $d_i$ the dominance deviation, $i_i$ the epistasis effect and $e_i$ the random error term.
+
+
+## Solution II
+
+* For predicting breeding values $d_i$ and $i_i$ are often ignored, leading to a simplified version of the genetic model
+
+$$y_i= \mu + u_i + e_i$$
+
+* Expected values and variance-covariance matrix
+
+\begin{align}
+E \left[\begin{array}{c} y_i \\ u_i \\ e_i \end{array} \right]   &= \left[\begin{array}{c} \mu \\ 0 \\ 0 \end{array} \right] \notag \\
+var \left[\begin{array}{c} y_i \\ u_i \\ e_i \end{array} \right] &= \left[\begin{array}{ccc} \sigma_y^2  &  \sigma_u^2   &  \sigma_e^2 \\
+                                                                                             \sigma_u^2  &  \sigma_u^2   &  0  \\
+                                                                                             \sigma_e^2  &  0            &  \sigma_e^2  \end{array} \right] \notag
+\end{align}
+
+
+## How to Predict Breeding Values
+
+*  Predicted breeding values ($\hat{u}$) are a function of the observed phenotypic data ($y$)
+
+$\rightarrow$ $\hat{u} = f(y)$
+
+* What should $f()$ look like?
+* Goal: Maximize improvement of offspring generation over parents
+
+$\rightarrow$ $\hat{u}$ should be conditional expected value of true breeding value $u$ given $y$: 
+
+$$\hat{u} = E(u | y)$$
+
+
+## Derivation
+
+* Assume: multivariate normality of $u$ and $y$ and $E(u) = 0$, then
+
+\begin{align}
+\hat{u} &= E(u | y) = E(u) + cov(u,y^T) * var(y)^{-1} * (y - E(y)) \notag \\
+        &= E(u | y) = cov(u,y^T) * var(y)^{-1} * (y - E(y)) \notag
+\end{align}
+
+
+* $\hat{u}$ consists of two parts
+
+1. $(y - E(y))$: phenotypic observations corrected for environmental effects
+2. $cov(u,y^T) * var(y)^{-1}$: weighting factor of corrected observation
