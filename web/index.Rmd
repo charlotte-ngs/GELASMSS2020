@@ -159,7 +159,7 @@ vec_topics_slides[which(Datum == format(as.Date("2020/04/06"), "%d.%m"))] <- pas
 # vec_topics_slides[which(Datum == format(as.Date("2020/04/13"), "%d.%m"))] <- paste0("[](", s_sl_url, "", ")") 
 vec_topics_slides[which(Datum == format(as.Date("2020/04/20"), "%d.%m"))] <- paste0("[Model Selection](", s_sl_url, "w09/gel-w09-v03-bp.pdf)")
 vec_topics_slides[which(Datum == format(as.Date("2020/04/27"), "%d.%m"))] <- paste0("[Variance Components Estimation](", s_sl_url, "w10/gel-w10-v04-vce.pdf)") 
-vec_topics_slides[which(Datum == format(as.Date("2020/05/04"), "%d.%m"))] <- paste0("[](", s_sl_url, "", ")") 
+vec_topics_slides[which(Datum == format(as.Date("2020/05/04"), "%d.%m"))] <- paste0("[Prediction of Breeding Values](", s_sl_url, "w11/gel-w11-v05-pbv.pdf)") 
 vec_topics_slides[which(Datum == format(as.Date("2020/05/11"), "%d.%m"))] <- paste0("[](", s_sl_url, "", ")") 
   
 # create data frame and convert it to table
@@ -239,6 +239,8 @@ vec_topics_addmat[which(Datum == format(as.Date("2020/04/20"), "%d.%m"))] <- "[R
 
 vec_topics_addmat[which(Datum == format(as.Date("2020/04/27"), "%d.%m"))] <- "[Recording of Lecture 10](https://youtu.be/6-BMfCWgPLI)"
 
+vec_topics_addmat[which(Datum == format(as.Date("2020/05/04"), "%d.%m"))] <- "[Recording of Lecture 11 (Part 1)](https://youtu.be/vJuG7GNkruM), [Recording of Lecture 11 (Part 2)](https://youtu.be/N-VYpsbdv-0)"
+
 # dataframe and table with additional material
 df_addmat <- tibble::tibble(Week = Woche, Date = Datum, Topic = vec_topics_addmat)
 knitr::kable(df_addmat)
@@ -246,5 +248,5 @@ knitr::kable(df_addmat)
 
 
 ```{r, echo=FALSE, results='asis'}
-cat(rmddochelper::get_latest_change(ps_msg = "Latest Changes"), "\n")
+cat(rmdhelp::get_latest_change(ps_msg = "Latest Changes"), "\n")
 ```

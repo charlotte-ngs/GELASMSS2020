@@ -56,6 +56,7 @@ var \left[\begin{array}{c} y_i \\ u_i \\ e_i \end{array} \right] &= \left[\begin
 \end{align}
 
 
+
 ## How to Predict Breeding Values
 
 *  Predicted breeding values ($\hat{u}$) are a function of the observed phenotypic data ($y$)

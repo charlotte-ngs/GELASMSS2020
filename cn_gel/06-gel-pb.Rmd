@@ -75,8 +75,8 @@ The variance $var(\hat{u})$ is the same as the covariance $cov(u, \hat{u})$ betw
 var(\hat{u})    &= var(cov(u,y^T) * var(y)^{-1} * (y - E(y))) \notag \\
                 &= cov(u,y^T) * var(y)^{-1} * var(y - E(y)) * var(y)^{-1} * cov(y,u^T) \notag \\
                 &= cov(u,y^T) * var(y)^{-1}  * cov(y,u^T) \notag \\
-cov(u, \hat{u}) &= cov(u, (cov(u,y^T) * var(y)^{-1} * (y - E(y)))) \notag \\
-                &= cov(u, (y-E(y))) * var(y)^{-1} * cov(y,u^T) \notag \\
+cov(u, \hat{u}) &= cov(u, (cov(u,y^T) * var(y)^{-1} * (y - E(y)))^T) \notag \\
+                &= cov(u, (y-E(y))^T) * var(y)^{-1} * cov(y,u^T) \notag \\
                 &= cov(u,y^T)  * var(y)^{-1} * cov(y,u^T) = var(\hat{u})
 (\#eq:gel-pb-pbv-variance)           
 \end{align}
