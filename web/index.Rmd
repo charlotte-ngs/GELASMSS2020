@@ -160,7 +160,7 @@ vec_topics_slides[which(Datum == format(as.Date("2020/04/06"), "%d.%m"))] <- pas
 vec_topics_slides[which(Datum == format(as.Date("2020/04/20"), "%d.%m"))] <- paste0("[Model Selection](", s_sl_url, "w09/gel-w09-v03-bp.pdf)")
 vec_topics_slides[which(Datum == format(as.Date("2020/04/27"), "%d.%m"))] <- paste0("[Variance Components Estimation](", s_sl_url, "w10/gel-w10-v04-vce.pdf)") 
 vec_topics_slides[which(Datum == format(as.Date("2020/05/04"), "%d.%m"))] <- paste0("[Prediction of Breeding Values](", s_sl_url, "w11/gel-w11-v05-pbv.pdf)") 
-vec_topics_slides[which(Datum == format(as.Date("2020/05/11"), "%d.%m"))] <- paste0("[](", s_sl_url, "", ")") 
+vec_topics_slides[which(Datum == format(as.Date("2020/05/11"), "%d.%m"))] <- paste0("[Braunvieh Schweiz](", s_sl_url, "w12/Vortrag_Braunvieh_Schweiz_ETH_Studenten_Mai_2019_mod.pdf), [Qualitas AG](", s_sl_url, "w12/Vorstellung_Qualitas_20200508.pdf)") 
   
 # create data frame and convert it to table
 df_slides <- tibble::tibble(Week = Woche, Date = Datum, Topic = vec_topics_slides)
