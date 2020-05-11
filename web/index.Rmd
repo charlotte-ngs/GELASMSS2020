@@ -161,7 +161,8 @@ vec_topics_slides[which(Datum == format(as.Date("2020/04/20"), "%d.%m"))] <- pas
 vec_topics_slides[which(Datum == format(as.Date("2020/04/27"), "%d.%m"))] <- paste0("[Variance Components Estimation](", s_sl_url, "w10/gel-w10-v04-vce.pdf)") 
 vec_topics_slides[which(Datum == format(as.Date("2020/05/04"), "%d.%m"))] <- paste0("[Prediction of Breeding Values](", s_sl_url, "w11/gel-w11-v05-pbv.pdf)") 
 vec_topics_slides[which(Datum == format(as.Date("2020/05/11"), "%d.%m"))] <- paste0("[Braunvieh Schweiz](", s_sl_url, "w12/Vortrag_Braunvieh_Schweiz_ETH_Studenten_Mai_2019_mod.pdf), [Qualitas AG](", s_sl_url, "w12/Vorstellung_Qualitas_20200508.pdf)") 
-  
+vec_topics_slides[which(Datum == format(as.Date("2020/05/18"), "%d.%m"))] <- paste0("[Suisag](", s_sl_url, "w13/Vorlesung_ZWS_ETH&HAFL_2020.pptx)") 
+
 # create data frame and convert it to table
 df_slides <- tibble::tibble(Week = Woche, Date = Datum, Topic = vec_topics_slides)
 knitr::kable(df_slides)
