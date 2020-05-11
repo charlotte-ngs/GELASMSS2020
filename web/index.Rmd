@@ -213,9 +213,9 @@ vec_topics_sol[which(Datum == format(as.Date("2020/04/06"), "%d.%m"))] <- paste0
 # vec_topics_sol[which(Datum == format(as.Date("2020/04/13"), "%d.%m"))] <- paste0("[](", s_sol_url, ")") 
 vec_topics_sol[which(Datum == format(as.Date("2020/04/20"), "%d.%m"))] <- paste0("[Model Selection](", s_sol_url, "w09/gel-w09-sol01.pdf)")
 vec_topics_sol[which(Datum == format(as.Date("2020/04/27"), "%d.%m"))] <- paste0("[Variance Components Estimation](", s_sol_url, "w10/gel-w10-sol02.pdf)")
-# vec_topics_sol[which(Datum == format(as.Date("2020/05/04"), "%d.%m"))] <- paste0("[Prediction of Breeding values](", s_sol_url, "w11/gel-w11-sol03.pdf)") 
+vec_topics_sol[which(Datum == format(as.Date("2020/05/04"), "%d.%m"))] <- paste0("[Prediction of Breeding values](", s_sol_url, "w11/gel-w11-sol03.pdf)") 
 vec_topics_sol[which(Datum == format(as.Date("2020/05/11"), "%d.%m"))] <- paste0("[](", s_sol_url, ")") 
-vec_topics_sol[which(Datum == format(as.Date("2020/05/18"), "%d.%m"))] <- paste0("[](", s_sol_url, ")") 
+vec_topics_sol[which(Datum == format(as.Date("2020/05/18"), "%d.%m"))] <- paste0("Test Exams [ASM](", s_sol_url, "testexam/asmss2019_exam_sol.pdf) [GEL](", s_sol_url, "testexam/gelss2019_exam_sol.pdf)") 
 
 # create dataframe and table
 df_sol <- tibble::tibble(Week = Woche, Date = Datum, Topic = vec_topics_sol)
@@ -241,6 +241,9 @@ vec_topics_addmat[which(Datum == format(as.Date("2020/04/20"), "%d.%m"))] <- "[R
 vec_topics_addmat[which(Datum == format(as.Date("2020/04/27"), "%d.%m"))] <- "[Recording of Lecture 10](https://youtu.be/6-BMfCWgPLI)"
 
 vec_topics_addmat[which(Datum == format(as.Date("2020/05/04"), "%d.%m"))] <- "[Recording of Lecture 11 (Part 1)](https://youtu.be/vJuG7GNkruM), [Recording of Lecture 11 (Part 2)](https://youtu.be/N-VYpsbdv-0)"
+
+vec_topics_addmat[which(Datum == format(as.Date("2020/05/11"), "%d.%m"))] <- "[Recording of Lecture 12](https://youtu.be/a7ZUrkJvS8s)"
+
 
 # dataframe and table with additional material
 df_addmat <- tibble::tibble(Week = Woche, Date = Datum, Topic = vec_topics_addmat)
