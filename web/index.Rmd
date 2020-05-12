@@ -244,6 +244,7 @@ vec_topics_addmat[which(Datum == format(as.Date("2020/05/04"), "%d.%m"))] <- "[R
 
 vec_topics_addmat[which(Datum == format(as.Date("2020/05/11"), "%d.%m"))] <- "[Recording of Lecture 12](https://youtu.be/a7ZUrkJvS8s)"
 
+vec_topics_addmat[which(Datum == format(as.Date("2020/05/18"), "%d.%m"))] <- "[Recording of Lecture 13 - Zuchtwertschätzung beim Schwein](https://youtu.be/rj6Ch756N90)"
 
 # dataframe and table with additional material
 df_addmat <- tibble::tibble(Week = Woche, Date = Datum, Topic = vec_topics_addmat)
