@@ -1,0 +1,2 @@
+list(seed = 8769L, name = "Bertsch", firstname = "Manuela", leginr = 16924847L, 
+    alias = "mabertsc")
